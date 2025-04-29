@@ -389,7 +389,7 @@ const translations = {
         phone: "Téléphone",
         email: "Email",
         address: "Adresse",
-        contactFormTitle: "Contactez-moi!",
+        contactFormTitle: "Contactez moi!",
         namePlaceholder: "Nom Complet",
         emailPlaceholder: "Adresse Email",
         phonePlaceholder: "Numéro de Téléphone",
@@ -454,7 +454,7 @@ function changeLanguage(lang) {
     homeSection.querySelector('.btn').textContent = t.downloadCV;
 
     // Services Section
-    document.querySelector('.services .heading').innerHTML = `${t.servicesTitle} <span>${t.servicesTitle.split(' ')[1]}</span>`;
+    document.querySelector('.services .heading').innerHTML = `${t.servicesTitle} `;
 
     const services = document.querySelectorAll('.services-box');
     services[0].querySelector('h3').textContent = t.webDev;
@@ -482,7 +482,7 @@ function changeLanguage(lang) {
     resumeBtns[3].textContent = t.about;
 
     // Portfolio Section
-    document.querySelector('.portfolio .heading').innerHTML = `${t.portfolioTitle} <span>${t.portfolioTitle.split(' ')[1]}</span>`;
+    document.querySelector('.portfolio .heading').innerHTML = `${t.portfolioTitle} `;
 
     const portfolioDetails = document.querySelectorAll('.portfolio-detail');
     portfolioDetails[0].querySelector('h3').textContent = t.project1;
