@@ -58,22 +58,41 @@ logoLink.addEventListener('click', () => {
     }
 });
 
+// GESTION DES BOUTONS RESUME - VERSION CORRIGÉE
+const resumeBtnsContainer = document.querySelector('.resume-container .resume-box:first-child');
+const resumeBtns = resumeBtnsContainer.querySelectorAll('.resume-btn');
+const resumeDetails = document.querySelectorAll('.resume-detail');
 
-const resumeBtns =document.querySelectorAll('.resume-btn')
+// Supprimer tous les anciens événements pour éviter les doublons
+resumeBtns.forEach(btn => {
+    // Cloner le bouton pour supprimer tous les événements
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode.replaceChild(newBtn, btn);
+});
 
-resumeBtns.forEach((btn, idx) => {
-    btn.addEventListener('click', () =>{
-        const resumeDetails = document.querySelectorAll('.resume-detail');
+// Re-sélectionner les nouveaux boutons
+const newResumeBtns = resumeBtnsContainer.querySelectorAll('.resume-btn');
 
-        resumeBtns.forEach(btn =>{
-            btn.classList.remove('active');
-        });
+newResumeBtns.forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+        // Retirer active de tous les boutons
+        newResumeBtns.forEach(b => b.classList.remove('active'));
+        // Ajouter active au bouton cliqué
         btn.classList.add('active');
 
-        resumeDetails.forEach(detail =>{
-            detail.classList.remove('active')
-        } );
-        resumeDetails[idx].classList.add('active');
+        // Retirer active de tous les détails
+        resumeDetails.forEach(detail => detail.classList.remove('active'));
+        // Ajouter active au détail correspondant
+        if (resumeDetails[idx]) {
+            resumeDetails[idx].classList.add('active');
+        }
+
+        // Gestion spéciale pour la section Skills (index 2)
+        if (idx === 2 && resumeDetails[2]) {
+            setTimeout(() => {
+                animateSkills();
+            }, 100);
+        }
     });
 });
 
@@ -98,14 +117,14 @@ arrowRight.addEventListener('click', () => {
         index++;
         arrowLeft.classList.remove('disabled');
     } else {
-        index = 5; // Attention : cela saute à 5 au lieu de rester dans les limites (à corriger selon besoin)
+        index = 6;
         arrowRight.classList.add('disabled');
     }
     activePortfolio();
 });
 
 arrowLeft.addEventListener('click', () => {
-    if (index > 1) { // tu avais mis 1, mais normalement on contrôle dès 0
+    if (index > 1) {
         index--;
         arrowRight.classList.remove('disabled');
     } else {
@@ -115,9 +134,134 @@ arrowLeft.addEventListener('click', () => {
     activePortfolio();
 });
 
+// Fonction cubic-bezier pour reproduire exactement la courbe CSS
+function cubicBezier(t, p0, p1, p2, p3) {
+    return Math.pow(1 - t, 3) * p0 +
+        3 * Math.pow(1 - t, 2) * t * p1 +
+        3 * (1 - t) * Math.pow(t, 2) * p2 +
+        Math.pow(t, 3) * p3;
+}
 
+// Fonction d'easing cubic-bezier(0.4, 0, 0.2, 1) identique au CSS
+function cssEasing(t) {
+    return cubicBezier(t, 0, 0.4, 0.2, 1);
+}
 
-// Traductions complètes
+// Fonction pour animer les cercles de compétences avec synchronisation parfaite
+function animateSkills() {
+    const skillCharts = document.querySelectorAll('.skill-chart');
+
+    skillCharts.forEach((chart, index) => {
+        const percent = parseInt(chart.getAttribute('data-percent'));
+        const skillCircleFill = chart.querySelector('.skill-circle-fill');
+        const skillPercent = chart.querySelector('.skill-percent');
+
+        // Reset l'animation
+        skillCircleFill.style.strokeDasharray = '0, 100';
+        skillPercent.style.opacity = '0';
+
+        // Animer avec un délai pour créer un effet cascade
+        setTimeout(() => {
+            // Configuration initiale du pourcentage
+            skillPercent.style.opacity = '1';
+            skillPercent.style.position = 'absolute';
+            skillPercent.style.fontSize = '1.2rem';
+            skillPercent.style.fontWeight = 'bold';
+            skillPercent.style.background = 'var(--bg-color)';
+            skillPercent.style.padding = '2px 6px';
+            skillPercent.style.borderRadius = '10px';
+            skillPercent.style.border = '2px solid var(--main-color)';
+            skillPercent.style.color = 'var(--main-color)';
+            skillPercent.style.zIndex = '10';
+            skillPercent.style.transformOrigin = 'center center';
+            skillPercent.style.transition = 'none';
+            skillPercent.textContent = '0%';
+
+            // Démarrer l'animation du cercle
+            skillCircleFill.style.strokeDasharray = `${percent}, 100`;
+            skillCircleFill.style.transition = 'stroke-dasharray 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+
+            // Animer le pourcentage avec la même courbe d'easing
+            animatePercentageSync(skillPercent, percent, chart);
+        }, index * 100);
+    });
+}
+
+// Fonction pour animer le pourcentage avec position finale à 0°
+function animatePercentageSync(element, targetPercent, chart) {
+    const duration = 1500; // Même durée que le CSS
+    let startTime = null;
+
+    // Dimensions du chart
+    const centerX = chart.offsetWidth / 2;
+    const centerY = chart.offsetHeight / 2;
+    const radius = centerX * 0.75; // Même rayon que le cercle
+
+    function animate(timestamp) {
+        if (!startTime) startTime = timestamp;
+
+        const elapsed = timestamp - startTime;
+        const rawProgress = Math.min(elapsed / duration, 1);
+
+        // Appliquer la même courbe d'easing que le CSS
+        const easedProgress = cssEasing(rawProgress);
+
+        // Calculer l'angle actuel basé sur le progress avec easing
+        const currentPercent = easedProgress * targetPercent;
+        const angle = (currentPercent / 100 * 2 * Math.PI) - (Math.PI / 2);
+
+        // Position du pourcentage pendant l'animation
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+
+        // Appliquer la position
+        element.style.left = `${x}px`;
+        element.style.top = `${y}px`;
+        element.style.transform = 'translate(-50%, -50%)';
+        element.textContent = `${Math.round(currentPercent)}%`;
+
+        if (rawProgress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            // Animation terminée - TOUS les pourcentages se placent à 0° (en haut)
+            const finalAngle = -Math.PI / 2; // 0° = en haut du cercle
+            const finalX = centerX + radius * Math.cos(finalAngle);
+            const finalY = centerY + radius * Math.sin(finalAngle);
+
+            // Animation de transition vers la position finale à 0°
+            element.style.transition = 'left 0.8s ease-out, top 0.8s ease-out, transform 0.3s ease';
+            element.style.left = `${finalX}px`;
+            element.style.top = `${finalY}px`;
+            element.textContent = `${targetPercent}%`;
+
+            // Petit effet de rebond à la fin
+            element.style.transform = 'translate(-50%, -50%) scale(1.2)';
+
+            setTimeout(() => {
+                element.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 300);
+
+            // Nettoyer les transitions après l'animation
+            setTimeout(() => {
+                element.style.transition = 'none';
+            }, 1100);
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// Déclencher l'animation au chargement de la page si Skills est déjà visible
+document.addEventListener('DOMContentLoaded', () => {
+    const skillsButton = document.querySelector('.resume-btn:nth-child(3)');
+    if (skillsButton && skillsButton.classList.contains('active')) {
+        setTimeout(() => {
+            animateSkills();
+        }, 500);
+    }
+});
+
+// Traductions complètes avec la nouvelle section
 const translations = {
     en: {
         // Header
@@ -161,6 +305,7 @@ const translations = {
         experience: "Experience",
         education: "Education",
         skills: "Skills",
+        hobbiesVolunteer: "Hobbies & Volunteer",
         about: "About Me",
         expTitle: "My Experience",
         expDesc: "Professional experiences including internships and voluntary work.",
@@ -168,47 +313,26 @@ const translations = {
         eduDesc: "Academic background and training.",
         skillsTitle: "My Skills",
         skillsDesc: "Technical skills across languages, frameworks, databases, platforms, and tools.",
+        hobbiesTitle: "Hobbies & Volunteer Work",
+        hobbiesDesc: "Personal interests and community involvement that shape my character and values.",
         aboutTitle: "About Me",
         aboutDesc: "Get to know me better through some key personal details.",
 
-        // Experience Items
-        experienceItems: {
-            internship: {
-                year: "July - August 2024",
-                title: "Web Development Intern",
-                company: "OCP Group, Khouribga",
-                description: "Worked on the digitalization of professional maintenance operations during a final year internship."
-            }
-        },
-
-        // Education Items
-        educationItems: {
-            ensias: {
-                year: "2023 - Present",
-                title: "Engineering Degree in Data Science and IoT",
-                institution: "ENSIAS, Rabat, Morocco",
-                description: "Currently pursuing an engineering degree specializing in Data Science and IoT."
-            },
-            cpge: {
-                year: "2021 - 2023",
-                title: "Preparatory Classes for Engineering Schools (CPGE)",
-                institution: "CPGE Ibn Abdoune, Khouribga, Morocco",
-                description: "Completed preparatory classes focused on Mathematics and Physics for competitive engineering school entrance exams."
-            },
-            bac: {
-                year: "2020 - 2021",
-                title: "Baccalaureate in Physical Sciences",
-                institution: "Lycée Bir Anzarane, Fkih Ben Salah, Morocco",
-                description: "Graduated with honors ('Très Bien' distinction) in Physical Sciences."
-            }
-        },
+        // Hobbies & Volunteer
+        creativeHobbies: "Creative Hobbies",
+        drawing: "Drawing & Illustration",
+        drawingDesc: "Passionate about sketching and digital art. I enjoy creating illustrations that blend traditional techniques with modern digital tools, expressing creativity through visual storytelling.",
+        handmade: "Handmade Creations",
+        handmadeDesc: "Love crafting unique items with my hands, from decorative pieces to functional objects. This hobby enhances my attention to detail and problem-solving skills while providing a creative outlet.",
+        volunteerActivities: "Volunteer Activities",
+        cindh: "CINDH Social Club Volunteer",
+        cindhDesc: "Active volunteer in CINDH, a social club dedicated to organizing community activities to help people in need. Participated in various humanitarian initiatives and social support programs.",
+        itClub: "ENSIAS IT Club Event Manager",
+        itClubDesc: "Lead the Event Cell at ENSIAS IT Club, a technical organization that hosts events to explore the IT world. Organize workshops, conferences, and tech meetups to foster learning and networking.",
 
         // About Me Items
         aboutItems: {
             name: "Name",
-            gender: "Gender",
-            age: "Age",
-            status: "Status",
             city: "City",
             nationality: "Nationality",
             phone: "Phone",
@@ -217,14 +341,11 @@ const translations = {
         },
         aboutValues: {
             name: "Zineb Mouman",
-            gender: "Female",
-            age: "22 Years old",
-            status: "Single",
             city: "Rabat",
             nationality: "Moroccan",
             phone: "+212 621-034162",
             email: "moumanzineb9@gmail.com",
-            languages: "English, French, Arab"
+            languages: "English, French, Arabic"
         },
 
         // Portfolio Section
@@ -300,6 +421,7 @@ const translations = {
         experience: "Expérience",
         education: "Éducation",
         skills: "Compétences",
+        hobbiesVolunteer: "Loisirs & Bénévolat",
         about: "À propos",
         expTitle: "Mon Expérience",
         expDesc: "Expériences professionnelles incluant stages et travail bénévole.",
@@ -307,47 +429,26 @@ const translations = {
         eduDesc: "Parcours académique et formations.",
         skillsTitle: "Mes Compétences",
         skillsDesc: "Compétences techniques en langages, frameworks, bases de données, plateformes et outils.",
+        hobbiesTitle: "Loisirs & Bénévolat",
+        hobbiesDesc: "Intérêts personnels et engagement communautaire qui façonnent mon caractère et mes valeurs.",
         aboutTitle: "À propos",
         aboutDesc: "Apprenez à mieux me connaître à travers quelques détails personnels clés.",
 
-        // Experience Items
-        experienceItems: {
-            internship: {
-                year: "Juillet - Août 2024",
-                title: "Stagiaire en Développement Web",
-                company: "Groupe OCP, Khouribga",
-                description: "Travail sur la digitalisation des opérations de maintenance professionnelle lors d'un stage de fin d'études."
-            }
-        },
-
-        // Education Items
-        educationItems: {
-            ensias: {
-                year: "2023 - Présent",
-                title: "Diplôme d'Ingénieur en Science des Données et IoT",
-                institution: "ENSIAS, Rabat, Maroc",
-                description: "Actuellement en cours d'obtention d'un diplôme d'ingénieur spécialisé en Science des Données et IoT."
-            },
-            cpge: {
-                year: "2021 - 2023",
-                title: "Classes Préparatoires aux Grandes Écoles (CPGE)",
-                institution: "CPGE Ibn Abdoune, Khouribga, Maroc",
-                description: "Terminé les classes préparatoires axées sur les Mathématiques et Physique pour les concours d'entrée aux écoles d'ingénieurs."
-            },
-            bac: {
-                year: "2020 - 2021",
-                title: "Baccalauréat en Sciences Physiques",
-                institution: "Lycée Bir Anzarane, Fkih Ben Salah, Maroc",
-                description: "Diplômé avec mention 'Très Bien' en Sciences Physiques."
-            }
-        },
+        // Hobbies & Volunteer
+        creativeHobbies: "Loisirs Créatifs",
+        drawing: "Dessin & Illustration",
+        drawingDesc: "Passionnée de croquis et d'art numérique. J'aime créer des illustrations qui mélangent techniques traditionnelles et outils numériques modernes, exprimant la créativité à travers la narration visuelle.",
+        handmade: "Créations Artisanales",
+        handmadeDesc: "J'adore fabriquer des objets uniques avec mes mains, des pièces décoratives aux objets fonctionnels. Ce passe-temps améliore mon attention aux détails et mes compétences de résolution de problèmes.",
+        volunteerActivities: "Activités Bénévoles",
+        cindh: "Bénévole Club Social CINDH",
+        cindhDesc: "Bénévole active au CINDH, un club social dédié à l'organisation d'activités communautaires pour aider les personnes dans le besoin. Participation à diverses initiatives humanitaires et programmes de soutien social.",
+        itClub: "Responsable Événements Club IT ENSIAS",
+        itClubDesc: "Dirige la Cellule Événements du Club IT ENSIAS, une organisation technique qui organise des événements pour explorer le monde de l'informatique. Organisation d'ateliers, conférences et rencontres tech.",
 
         // About Me Items
         aboutItems: {
             name: "Nom",
-            gender: "Genre",
-            age: "Âge",
-            status: "Statut",
             city: "Ville",
             nationality: "Nationalité",
             phone: "Téléphone",
@@ -356,9 +457,6 @@ const translations = {
         },
         aboutValues: {
             name: "Zineb Mouman",
-            gender: "Féminin",
-            age: "22 ans",
-            status: "Célibataire",
             city: "Rabat",
             nationality: "Marocaine",
             phone: "+212 621-034162",
@@ -404,14 +502,20 @@ const langBtn = document.querySelector('.lang-btn');
 const langOptions = document.querySelector('.lang-options');
 
 // Gestion du clic sur le bouton de langue
-langBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    langOptions.classList.toggle('show');
-});
+if (langBtn) {
+    langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (langOptions) {
+            langOptions.classList.toggle('show');
+        }
+    });
+}
 
 // Fermer le menu quand on clique ailleurs
 document.addEventListener('click', () => {
-    langOptions.classList.remove('show');
+    if (langOptions) {
+        langOptions.classList.remove('show');
+    }
 });
 
 // Gestion du changement de langue
@@ -419,12 +523,16 @@ document.querySelectorAll('.lang-option').forEach(option => {
     option.addEventListener('click', (e) => {
         const lang = e.target.dataset.lang;
         changeLanguage(lang);
-        langOptions.classList.remove('show');
+        if (langOptions) {
+            langOptions.classList.remove('show');
+        }
 
         // Mettre à jour le bouton principal
-        langBtn.innerHTML = lang === 'fr'
-            ? `<i class='bx bx-globe'></i><span>FR</span>`
-            : `<i class='bx bx-globe'></i><span>EN</span>`;
+        if (langBtn) {
+            langBtn.innerHTML = lang === 'fr'
+                ? `<i class='bx bx-globe'></i><span>FR</span>`
+                : `<i class='bx bx-globe'></i><span>EN</span>`;
+        }
     });
 });
 
@@ -436,92 +544,53 @@ function changeLanguage(lang) {
     document.title = t.title;
 
     // Header
-    document.querySelectorAll('header nav a')[0].textContent = t.home;
-    document.querySelectorAll('header nav a')[1].textContent = t.services;
-    document.querySelectorAll('header nav a')[2].textContent = t.resume;
-    document.querySelectorAll('header nav a')[3].textContent = t.portfolio;
-    document.querySelectorAll('header nav a')[4].textContent = t.contact;
+    const headerLinks = document.querySelectorAll('header nav a');
+    if (headerLinks.length >= 5) {
+        headerLinks[0].textContent = t.home;
+        headerLinks[1].textContent = t.services;
+        headerLinks[2].textContent = t.resume;
+        headerLinks[3].textContent = t.portfolio;
+        headerLinks[4].textContent = t.contact;
+    }
 
     // Home Section
     const homeSection = document.querySelector('.home-detail');
-    homeSection.querySelector('h1').textContent = t.homeTitle;
-    homeSection.querySelector('h2').innerHTML = `${t.homeSubtitle} 
-        <span style="--i:4;" data-text="${t.professions.software}">${t.professions.software}</span>
-        <span style="--i:3;" data-text="${t.professions.devops}">${t.professions.devops}</span>
-        <span style="--i:2;" data-text="${t.professions.cloud}">${t.professions.cloud}</span>
-        <span style="--i:1;" data-text="${t.professions.it}">${t.professions.it}</span>`;
-    homeSection.querySelector('p').textContent = t.homeText;
-    homeSection.querySelector('.btn').textContent = t.downloadCV;
+    if (homeSection) {
+        const h1 = homeSection.querySelector('h1');
+        const h2 = homeSection.querySelector('h2');
+        const p = homeSection.querySelector('p');
+        const btn = homeSection.querySelector('.btn');
 
-    // Services Section
-    document.querySelector('.services .heading').innerHTML = `${t.servicesTitle} `;
+        if (h1) h1.textContent = t.homeTitle;
+        if (h2) {
+            h2.innerHTML = `${t.homeSubtitle} 
+                <span style="--i:4;" data-text="${t.professions.software}">${t.professions.software}</span>
+                <span style="--i:3;" data-text="${t.professions.devops}">${t.professions.devops}</span>
+                <span style="--i:2;" data-text="${t.professions.cloud}">${t.professions.cloud}</span>
+                <span style="--i:1;" data-text="${t.professions.it}">${t.professions.it}</span>`;
+        }
+        if (p) p.textContent = t.homeText;
+        if (btn) btn.textContent = t.downloadCV;
+    }
 
-    const services = document.querySelectorAll('.services-box');
-    services[0].querySelector('h3').textContent = t.webDev;
-    services[0].querySelector('p').textContent = t.webDesc;
-    services[1].querySelector('h3').textContent = t.mobileDev;
-    services[1].querySelector('p').textContent = t.mobileDesc;
-    services[2].querySelector('h3').textContent = t.dbManager;
-    services[2].querySelector('p').textContent = t.dbDesc;
-    services[3].querySelector('h3').textContent = t.cloud;
-    services[3].querySelector('p').textContent = t.cloudDesc;
-    services[4].querySelector('h3').textContent = t.devops;
-    services[4].querySelector('p').textContent = t.devopsDesc;
-    services[5].querySelector('h3').textContent = t.dataScience;
-    services[5].querySelector('p').textContent = t.dataDesc;
-
-    // Resume Section
+    // Resume Section - Boutons
     const resumeBox = document.querySelector('.resume-box:first-child');
-    resumeBox.querySelector('h2').textContent = t.resumeTitle;
-    resumeBox.querySelector('.desc').textContent = t.resumeDesc;
+    if (resumeBox) {
+        const h2 = resumeBox.querySelector('h2');
+        const desc = resumeBox.querySelector('.desc');
+        const buttons = resumeBox.querySelectorAll('.resume-btn');
 
-    const resumeBtns = resumeBox.querySelectorAll('.resume-btn');
-    resumeBtns[0].textContent = t.experience;
-    resumeBtns[1].textContent = t.education;
-    resumeBtns[2].textContent = t.skills;
-    resumeBtns[3].textContent = t.about;
+        if (h2) h2.textContent = t.resumeTitle;
+        if (desc) desc.textContent = t.resumeDesc;
 
-    // Portfolio Section
-    document.querySelector('.portfolio .heading').innerHTML = `${t.portfolioTitle} `;
-
-    const portfolioDetails = document.querySelectorAll('.portfolio-detail');
-    portfolioDetails[0].querySelector('h3').textContent = t.project1;
-    portfolioDetails[0].querySelector('.tech').previousElementSibling.textContent = t.project1Desc;
-    portfolioDetails[1].querySelector('h3').textContent = t.project2;
-    portfolioDetails[1].querySelector('.tech').previousElementSibling.textContent = t.project2Desc;
-    portfolioDetails[2].querySelector('h3').textContent = t.project3;
-    portfolioDetails[2].querySelector('.tech').previousElementSibling.textContent = t.project3Desc;
-    portfolioDetails[3].querySelector('h3').textContent = t.project4;
-    portfolioDetails[3].querySelector('.tech').previousElementSibling.textContent = t.project4Desc;
-    portfolioDetails[4].querySelector('h3').textContent = t.project5;
-    portfolioDetails[4].querySelector('.tech').previousElementSibling.textContent = t.project5Desc;
-    portfolioDetails[5].querySelector('h3').textContent = t.project6;
-    portfolioDetails[5].querySelector('.tech').previousElementSibling.textContent = t.project6Desc;
-
-    // Mettre à jour les boutons "Live Project" et "Github Repository"
-    document.querySelectorAll('.live-github span:first-child').forEach(el => {
-        el.textContent = t.liveProject;
-    });
-    document.querySelectorAll('.live-github span:last-child').forEach(el => {
-        el.textContent = t.githubRepo;
-    });
-
-    // Contact Section
-    const contactBox = document.querySelector('.contact-box:first-child');
-    contactBox.querySelector('h2').textContent = t.contactTitle;
-    contactBox.querySelector('p').textContent = t.contactSubtitle;
-    contactBox.querySelectorAll('.detail p:first-child')[0].textContent = t.phone;
-    contactBox.querySelectorAll('.detail p:first-child')[1].textContent = t.email;
-    contactBox.querySelectorAll('.detail p:first-child')[2].textContent = t.address;
-
-    const contactForm = document.querySelector('.contact-box:last-child form');
-    contactForm.querySelector('.heading').innerHTML = `${t.contactFormTitle.split(' ')[0]} <span>${t.contactFormTitle.split(' ')[1]}</span>`;
-    contactForm.querySelector('input[type="text"]').placeholder = t.namePlaceholder;
-    contactForm.querySelector('input[type="email"]').placeholder = t.emailPlaceholder;
-    contactForm.querySelectorAll('input[type="text"]')[1].placeholder = t.phonePlaceholder;
-    contactForm.querySelectorAll('input[type="text"]')[2].placeholder = t.subjectPlaceholder;
-    contactForm.querySelector('textarea').placeholder = t.messagePlaceholder;
-    contactForm.querySelector('.btn').textContent = t.sendBtn;
+        if (buttons.length >= 5) {
+            buttons[0].textContent = t.experience;
+            buttons[1].textContent = t.education;
+            buttons[2].textContent = t.skills;
+            buttons[3].textContent = t.hobbiesVolunteer;
+            buttons[4].textContent = t.about;
+        }
+    }
 
     // Stocker la préférence de langue
     localStorage.setItem('preferredLanguage', lang);
@@ -533,15 +602,14 @@ document.addEventListener('DOMContentLoaded', () => {
     changeLanguage(preferredLanguage);
 
     // Mettre à jour le bouton principal
-    langBtn.innerHTML = preferredLanguage === 'fr'
-        ? `<i class='bx bx-globe'></i><span>FR</span>`
-        : `<i class='bx bx-globe'></i><span>EN</span>`;
+    if (langBtn) {
+        langBtn.innerHTML = preferredLanguage === 'fr'
+            ? `<i class='bx bx-globe'></i><span>FR</span>`
+            : `<i class='bx bx-globe'></i><span>EN</span>`;
+    }
 });
 
-
-// Ajoutez ce code à votre fichier script.js
-
-// Sélection des éléments
+// Sélection des éléments pour le thème
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
 
@@ -580,7 +648,7 @@ function updateThemeColors(theme) {
     });
 }
 
-// Écouteur d'événement pour le bouton
+// Écouteur d'événement pour le bouton de thème
 if (themeIcon) {
     themeIcon.addEventListener('click', toggleTheme);
 }

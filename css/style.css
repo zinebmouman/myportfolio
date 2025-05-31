@@ -425,57 +425,390 @@ header a  span{
     text-align: left;
 }
 
-.resume-list {
-    display:  grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-    gap: 2rem;
-    height: 45rem;
-    overflow:  auto;
-}
-
-.resume-list::-webkit-scrollbar{
-    width: .7rem;
-}
-.resume-list::-webkit-scrollbar-thumb{
-    background: transparent;
-    border-radius: 1rem;
-}
-
-.resume-list:hover::-webkit-scrollbar-thumb{
-    background: var(--main-color);
-}
-
-.resume-list .resume-item{
-    background: var(--second-bg-color);
-    border-radius: .8rem;
-    padding: 3rem 2.5rem;
-    height: calc((65rem - 2rem) /2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.resume-item .year{
-    color: var(--main-color);
-}
-
-.resume-item h3{
-    font-size: 2.2rem;
-}
-.resume-item .company{
+/* Section Experience - Design Timeline Créatif */
+.resume-detail.experience .resume-list {
+    display: block;
     position: relative;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
+    padding: 3rem 2rem;
+    height: auto;
+    max-height: 50rem;
+    overflow-y: auto;
+    overflow-x: visible;
 }
-.resume-item .company::before{
+
+/* Timeline principale */
+.resume-detail.experience .resume-list::before {
     content: '';
     position: absolute;
+    left: 3rem;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg,
+    var(--main-color) 0%,
+    rgba(173, 227, 255, 0.5) 50%,
+    var(--main-color) 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(173, 227, 255, 0.3);
+}
+
+/* Container pour chaque expérience */
+.resume-detail.experience .resume-item {
+    position: relative;
+    background: var(--second-bg-color);
+    border-radius: 1.5rem;
+    padding: 2.5rem 3rem;
+    margin: 0 0 3rem 6rem;
+    height: auto;
+    display: block;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Effet de gradient animé sur la bordure */
+.resume-detail.experience .resume-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+    var(--main-color),
+    transparent,
+    var(--white-color),
+    transparent,
+    var(--main-color));
+    background-size: 300% 300%;
+    border-radius: 1.5rem;
+    padding: 2px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    animation: gradient-shift 4s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.resume-detail.experience .resume-item:hover::before {
+    opacity: 1;
+}
+
+.resume-detail.experience .resume-item:hover {
+    transform: translateX(15px) translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--main-color);
+}
+
+/* Point de connexion timeline */
+.resume-detail.experience .resume-item::after {
+    content: '';
+    position: absolute;
+    left: -4.5rem;
+    top: 3rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--main-color);
+    border: 4px solid var(--bg-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(173, 227, 255, 0.6);
+}
+
+.resume-detail.experience .resume-item:hover::after {
+    transform: scale(1.3);
+    background: var(--white-color);
+    box-shadow: 0 0 25px rgba(173, 227, 255, 0.8);
+}
+
+/* Badge année avec design moderne */
+.resume-detail.experience .resume-item .year {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--main-color), var(--white-color));
+    color:  var(--bg-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.resume-detail.experience .resume-item .year::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.resume-detail.experience .resume-item:hover .year::before {
+    left: 100%;
+}
+
+.resume-detail.experience .resume-item:hover .year {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Titre du poste */
+.resume-detail.experience .resume-item h3 {
+    font-size: 2.4rem;
+    color: var(--white-color);
+    margin: 1rem 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.resume-detail.experience .resume-item h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background: var(--main-color);
+    transition: width 0.4s ease;
+    border-radius: 2px;
+}
+
+.resume-detail.experience .resume-item:hover h3::after {
+    width: 100%;
+}
+
+.resume-detail.experience .resume-item:hover h3 {
+    color: var(--main-color);
+    transform: translateX(10px);
+}
+
+/* Entreprise avec icône */
+.resume-detail.experience .resume-item .company {
+    position: relative;
+    margin: 1.5rem 0;
+    padding-left: 3rem;
+    font-size: 1.6rem;
+    color: var(--main-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.resume-detail.experience .resume-item .company::before {
+    content: '🏢';
+    position: absolute;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
-    padding: .5rem;
+    font-size: 2rem;
+    padding: 0.5rem;
     background: var(--main-color);
     border-radius: 50%;
-    margin-left: -2rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resume-detail.experience .resume-item:hover .company::before {
+    transform: translateY(-50%) rotate(360deg) scale(1.1);
+    background: var(--white-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.resume-detail.experience .resume-item:hover .company {
+    transform: translateX(10px);
+    color: var(--white-color);
+}
+
+/* Description avec animations */
+.resume-detail.experience .resume-item p:last-child {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--white-color);
+    margin-top: 1.5rem;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.resume-detail.experience .resume-item:hover p:last-child {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Éléments décoratifs flottants */
+.resume-detail.experience .resume-item .floating-element {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--main-color);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: float-decoration 6s ease-in-out infinite;
+}
+
+.resume-detail.experience .resume-item .floating-element:nth-child(1) {
+    top: 20%;
+    right: 15%;
+    animation-delay: 0s;
+}
+
+.resume-detail.experience .resume-item .floating-element:nth-child(2) {
+    top: 60%;
+    right: 25%;
+    animation-delay: 2s;
+}
+
+.resume-detail.experience .resume-item .floating-element:nth-child(3) {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 4s;
+}
+
+@keyframes float-decoration {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-15px) rotate(180deg);
+        opacity: 0.8;
+    }
+}
+
+/* Badge "New" pour la dernière expérience */
+
+
+@keyframes pulse-badge {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Animation d'apparition */
+.resume-detail.experience .resume-item {
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: slideInTimeline 0.8s ease forwards;
+}
+
+.resume-detail.experience .resume-item:nth-child(1) { animation-delay: 0.2s; }
+.resume-detail.experience .resume-item:nth-child(2) { animation-delay: 0.4s; }
+.resume-detail.experience .resume-item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideInTimeline {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scrollbar personnalisée */
+.resume-detail.experience .resume-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.resume-detail.experience .resume-list::-webkit-scrollbar-track {
+    background: var(--second-bg-color);
+    border-radius: 10px;
+}
+
+.resume-detail.experience .resume-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--main-color), var(--white-color));
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.resume-detail.experience .resume-list::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color);
+    box-shadow: 0 0 10px rgba(173, 227, 255, 0.5);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .resume-detail.experience .resume-list::before {
+        left: 1.5rem;
+    }
+
+    .resume-detail.experience .resume-item {
+        margin-left: 4rem;
+        padding: 2rem;
+    }
+
+    .resume-detail.experience .resume-item::after {
+        left: -3.25rem;
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    .resume-detail.experience .resume-item h3 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .resume-detail.experience .resume-list {
+        padding: 2rem 1rem;
+    }
+
+    .resume-detail.experience .resume-list::before {
+        left: 1rem;
+    }
+
+    .resume-detail.experience .resume-item {
+        margin-left: 3rem;
+        padding: 1.5rem;
+    }
+
+    .resume-detail.experience .resume-item::after {
+        left: -2.75rem;
+    }
+
+    .resume-detail.experience .resume-item .company {
+        padding-left: 2.5rem;
+    }
+
+    .resume-detail.experience .resume-item .company::before {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+}
+
+/* Thème sombre */
+[data-theme="dark"] .resume-detail.experience .resume-item {
+    background: var(--second-bg-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .resume-detail.experience .resume-item:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .resume-detail.experience .resume-item::after {
+    border-color: var(--second-bg-color);
+}
+
+[data-theme="dark"] .resume-detail.experience .resume-list::before {
+    background: linear-gradient(180deg,
+    var(--main-color) 0%,
+    rgba(173, 227, 255, 0.3) 50%,
+    var(--main-color) 100%);
 }
 
 .resume-detail.skills .resume-list {
@@ -522,25 +855,295 @@ header a  span{
 }
 
 
-.resume-detail.about .resume-list{
+/* Version avec Icônes Boxicons - Plus Professionnelle */
+.resume-detail.about .resume-list {
     height: auto;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
 }
 
-.resume-detail.about  .resume-item{
+.resume-detail.about .resume-item {
+    position: relative;
     height: auto;
-    padding: 0 0 .5rem;
-    background: transparent;
+    padding: 2.5rem;
+    background: var(--second-bg-color);
+    border-radius: 2rem;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
-.resume-detail.about  .resume-item p{
+/* Gradient border animé */
+.resume-detail.about .resume-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--main-color), transparent, var(--main-color));
+    background-size: 200% 200%;
+    border-radius: 2rem;
+    padding: 2px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    animation: gradient-flow 4s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes gradient-flow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.resume-detail.about .resume-item:hover::before {
+    opacity: 1;
+}
+
+.resume-detail.about .resume-item:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--main-color);
+}
+
+/* Container pour l'icône */
+.resume-detail.about .item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(135deg, var(--main-color), var(--white-color));
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.resume-detail.about .resume-item:hover .item-icon {
+    transform: rotate(360deg) scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.resume-detail.about .item-icon i {
+    font-size: 2.5rem;
+    color: var(--bg-color);
+    transition: all 0.3s ease;
+}
+
+.resume-detail.about .resume-item:hover .item-icon i {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Container pour le contenu */
+.resume-detail.about .item-content {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.resume-detail.about .item-content p {
     color: var(--main-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.8rem;
+    position: relative;
 }
 
-.resume-detail.about  .resume-item p span{
+.resume-detail.about .item-content p::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: var(--main-color);
+    transition: width 0.3s ease;
+}
+
+.resume-detail.about .resume-item:hover .item-content p::after {
+    width: 100%;
+}
+
+.resume-detail.about .item-content span {
     color: var(--white-color);
-    margin-left: 1rem;
     font-size: 1.8rem;
+    font-weight: 500;
+    display: block;
+    line-height: 1.3;
+}
+
+/* Particules flottantes */
+.resume-detail.about .floating-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--main-color);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: float-around 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.resume-detail.about .floating-dot:nth-child(3) {
+    top: 15%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 5s;
+}
+
+.resume-detail.about .floating-dot:nth-child(4) {
+    top: 70%;
+    right: 15%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.resume-detail.about .floating-dot:nth-child(5) {
+    bottom: 20%;
+    left: 25%;
+    animation-delay: 4s;
+    animation-duration: 6s;
+}
+
+@keyframes float-around {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.4;
+    }
+    25% {
+        transform: translate(15px, -10px) rotate(90deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-10px, -15px) rotate(180deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translate(-15px, 10px) rotate(270deg);
+        opacity: 0.9;
+    }
+}
+
+/* Effet de pulse sur hover */
+.resume-detail.about .resume-item:hover .floating-dot {
+    animation-play-state: paused;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+}
+
+/* Animation d'apparition en cascade */
+.resume-detail.about .resume-item {
+    opacity: 0;
+    transform: translateX(-50px) rotateY(-15deg);
+    animation: slideInRight 0.8s ease forwards;
+}
+
+.resume-detail.about .resume-item:nth-child(odd) {
+    transform: translateX(50px) rotateY(15deg);
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+.resume-detail.about .resume-item:nth-child(1) { animation-delay: 0.1s; }
+.resume-detail.about .resume-item:nth-child(2) { animation-delay: 0.2s; }
+.resume-detail.about .resume-item:nth-child(3) { animation-delay: 0.3s; }
+.resume-detail.about .resume-item:nth-child(4) { animation-delay: 0.4s; }
+.resume-detail.about .resume-item:nth-child(5) { animation-delay: 0.5s; }
+.resume-detail.about .resume-item:nth-child(6) { animation-delay: 0.6s; }
+.resume-detail.about .resume-item:nth-child(7) { animation-delay: 0.7s; }
+.resume-detail.about .resume-item:nth-child(8) { animation-delay: 0.8s; }
+.resume-detail.about .resume-item:nth-child(9) { animation-delay: 0.9s; }
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .resume-detail.about .resume-list {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .resume-detail.about .resume-item {
+        padding: 2rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .resume-detail.about .item-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .resume-detail.about .item-icon i {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .resume-detail.about .resume-item {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+
+    .resume-detail.about .item-content p {
+        font-size: 1.2rem;
+    }
+
+    .resume-detail.about .item-content span {
+        font-size: 1.6rem;
+    }
+}
+
+/* Thème sombre */
+[data-theme="dark"] .resume-detail.about .resume-item {
+    background: var(--second-bg-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .resume-detail.about .resume-item:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .resume-detail.about .item-icon {
+    background: linear-gradient(135deg, var(--main-color), #4a90e2);
+}
+
+[data-theme="dark"] .resume-detail.about .item-icon i {
+    color: white;
 }
 
 .portfolio-container{
@@ -973,4 +1576,685 @@ header a  span{
 #theme-icon:hover {
     color: var(--second-bg-color);
     transform: rotate(30deg);
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+    margin-top: 3rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 0;
+    bottom: 0;
+    width: 0.2rem;
+    background: var(--main-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -0.5rem;
+    top: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--main-color);
+    border: 0.3rem solid var(--bg-color);
+    z-index: 1;
+}
+
+.timeline-date {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content {
+    background: var(--second-bg-color);
+    padding: 2rem;
+    border-radius: 0.8rem;
+}
+
+.timeline-content h3 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content .company {
+    position: relative;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-content .company::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+    background: var(--main-color);
+    border-radius: 50%;
+    margin-left: -2rem;
+}
+
+/* Skills Chart Styles */
+.skills-container {
+    margin-top: 3rem;
+}
+
+.skill-category {
+    margin-bottom: 3rem;
+}
+
+.skill-category h3 {
+    font-size: 2.4rem;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--main-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 4rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.skill-item i {
+    font-size: 4rem; /* Augmentez cette valeur (3rem par défaut) */
+    margin-bottom: 0.8rem; /* Ajustez si nécessaire */
+    color: var(--main-color);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 70%;
+}
+
+/* Mise à jour du CSS pour l'animation des cercles de compétences */
+
+/* Styles optimisés pour la section skills */
+.skills-container {
+    margin-top: 3rem;
+}
+
+.skill-category {
+    margin-bottom: 3rem;
+}
+
+.skill-category h3 {
+    font-size: 2.4rem;
+    color: var(--main-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--main-color);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 3rem;
+    overflow: visible;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.skill-chart {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-circle {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.skill-circle-bg {
+    fill: none;
+    stroke: var(--second-bg-color);
+    stroke-width: 3;
+}
+
+.skill-circle-fill {
+    fill: none;
+    stroke: var(--main-color);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 0, 100;
+    /* IMPORTANT: Même durée et courbe d'easing que le JavaScript */
+    transition: stroke-dasharray 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3.5rem;
+    color: var(--main-color);
+    opacity: 1;
+    z-index: 1;
+}
+
+.skill-percent {
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--bg-color);
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    white-space: nowrap;
+    /* Aucune transition CSS ici - tout géré par JavaScript */
+}
+
+.skill-name {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    color: var(--white-color);
+}
+
+/* Adaptations pour le thème sombre */
+[data-theme="dark"] .skill-percent {
+    background: var(--second-bg-color);
+    color: var(--white-color);
+    border-color: var(--main-color);
+}
+
+[data-theme="dark"] .skill-circle-bg {
+    stroke: var(--second-bg-color);
+}
+
+[data-theme="dark"] .skill-name {
+    color: var(--white-color);
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+        gap: 2rem;
+    }
+
+    .skill-chart {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .skill-icon {
+        font-size: 2.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+        gap: 1.5rem;
+    }
+
+    .skill-chart {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .skill-icon {
+        font-size: 2.5rem;
+    }
+
+    .skill-percent {
+        font-size: 1.1rem;
+        padding: 1px 4px;
+    }
+
+    .skill-name {
+        font-size: 1.4rem;
+    }
+}
+
+/* Section Resume - mise à jour pour Skills */
+.resume-detail.skills .resume-list {
+    display: block; /* Changé de grid à block */
+    height: auto;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+}
+
+.resume-detail.skills .resume-item {
+    position: relative;
+    align-items: center;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* Masquer les anciens styles de skills dans resume-item */
+.resume-detail.skills .resume-item i {
+    display: none;
+}
+
+.resume-detail.skills .resume-item span {
+    display: none;
+}
+
+/* Scrollbar personnalisée pour la section skills */
+.resume-detail.skills .resume-list::-webkit-scrollbar {
+    width: 0.7rem;
+}
+
+.resume-detail.skills .resume-list::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 1rem;
+}
+
+.resume-detail.skills .resume-list:hover::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+}
+
+
+/* Section Hobbies & Volontariat - Design Créatif */
+.resume-detail.hobbies .resume-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    height: auto;
+    padding: 2rem 0;
+}
+
+/* Container principal pour chaque catégorie */
+.hobbies-category {
+    background: var(--second-bg-color);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de gradient animé sur la bordure */
+.hobbies-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+    var(--main-color),
+    transparent,
+    var(--main-color),
+    transparent,
+    var(--main-color));
+    background-size: 300% 300%;
+    border-radius: 2rem;
+    padding: 2px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    animation: gradient-flow 4s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes gradient-flow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hobbies-category:hover::before {
+    opacity: 1;
+}
+
+.hobbies-category:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre de catégorie avec icône */
+.hobbies-category h3 {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 2.2rem;
+    color: var(--main-color);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hobbies-category h3::before {
+    content: '';
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* Icônes spécifiques */
+.hobbies-category.hobbies h3::before {
+    content: '🎨';
+    background: linear-gradient(135deg, var(--second-bg-color), var(--bg-color));
+}
+
+.hobbies-category.volunteer h3::before {
+    content: '🤝';
+    background: linear-gradient(135deg, #4834d4, #686de0);
+}
+
+.hobbies-category:hover h3::before {
+    transform: rotate(360deg) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Liste des éléments */
+.hobbies-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hobbies-item {
+    position: relative;
+    background: rgba(173, 227, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 1.8rem 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--main-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.hobbies-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.hobbies-item:hover::before {
+    left: 100%;
+}
+
+.hobbies-item:hover {
+    transform: translateX(10px);
+    background: rgba(173, 227, 255, 0.2);
+    border-left-width: 6px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de l'item */
+.hobbies-item h4 {
+    font-size: 1.8rem;
+    color: var(--white-color);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.hobbies-item h4::before {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    background: var(--main-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.hobbies-item:hover h4::before {
+    transform: scale(1.5);
+    box-shadow: 0 0 15px rgba(173, 227, 255, 0.6);
+}
+
+/* Description */
+.hobbies-item p {
+    font-size: 1.4rem;
+    color: var(--white-color);
+    opacity: 0.9;
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+}
+
+/* Icônes spéciales pour chaque hobby */
+.hobbies-item.drawing h4::after {
+    content: '✏️';
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.hobbies-item.crafts h4::after {
+    content: '🖐️';
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.hobbies-item.cindh h4::after {
+    content: '❤️';
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+.hobbies-item.it-club h4::after {
+    content: '💻';
+    font-size: 1.5rem;
+    margin-left: auto;
+}
+
+/* Effet de particules flottantes */
+.hobbies-category .floating-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--main-color);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float-particles 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.hobbies-category .floating-particle:nth-child(1) {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.hobbies-category .floating-particle:nth-child(2) {
+    top: 60%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+.hobbies-category .floating-particle:nth-child(3) {
+    bottom: 30%;
+    left: 25%;
+    animation-delay: 6s;
+}
+
+@keyframes float-particles {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    33% {
+        transform: translateY(-20px) rotate(120deg);
+        opacity: 0.7;
+    }
+    66% {
+        transform: translateY(-10px) rotate(240deg);
+        opacity: 0.5;
+    }
+}
+
+/* Badge de nombre d'activités */
+.hobbies-category .activity-count {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--main-color);
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.hobbies-category:hover .activity-count {
+    transform: scale(1.2) rotate(360deg);
+    background: var(--white-color);
+}
+
+/* Animation d'apparition */
+.resume-detail.hobbies .hobbies-category {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideInUp 0.8s ease forwards;
+}
+
+.resume-detail.hobbies .hobbies-category:nth-child(1) { animation-delay: 0.2s; }
+.resume-detail.hobbies .hobbies-category:nth-child(2) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Items animation en cascade */
+.hobbies-item {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideInRight 0.6s ease forwards;
+}
+
+.hobbies-item:nth-child(1) { animation-delay: 0.6s; }
+.hobbies-item:nth-child(2) { animation-delay: 0.8s; }
+.hobbies-item:nth-child(3) { animation-delay: 1.0s; }
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .resume-detail.hobbies .resume-list {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hobbies-category {
+        padding: 2rem;
+    }
+
+    .hobbies-category h3 {
+        font-size: 2rem;
+        gap: 1rem;
+    }
+
+    .hobbies-item {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hobbies-category {
+        padding: 1.5rem;
+    }
+
+    .hobbies-category h3 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+
+    .hobbies-item h4 {
+        font-size: 1.6rem;
+    }
+
+    .hobbies-item p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Thème sombre */
+[data-theme="dark"] .hobbies-category {
+    background: var(--second-bg-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .hobbies-category:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .hobbies-item {
+    background: rgba(173, 227, 255, 0.05);
+}
+
+[data-theme="dark"] .hobbies-item:hover {
+    background: rgba(173, 227, 255, 0.1);
 }

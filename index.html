@@ -62,13 +62,13 @@
         <h1>Zineb Mouman</h1>
         <h2>I'm a
             <span style="--i:4;" data-text="Software engineer">Software engineer</span>
-            <span style="--i:3;" data-text="DevOps engineer">DevOps engineer</span>
-            <span style="--i:2;" data-text="Cloud engineer">Cloud engineer</span>
+            <span style="--i:3;" data-text="DevOps Enthusiast">DevOps Enthusiast</span>
+            <span style="--i:2;" data-text="Cloud Enthusiast">Cloud Enthusiast</span>
             <span style="--i:1;" data-text="IT Enthusiaste">IT Enthusiast</span>
         </h2>
         <p>Hello, I’m Zineb, a software engineering student specializing in Data Science and IoT at ENSIAS, with a strong background in mathematics and physics from preparatory classes (MP). I have two years of hands-on experience in web/mobile development, DevOps, data management, and data science. Currently, I’m focusing on microservices projects using Kubernetes, Kafka, and Docker. Beyond academics, I lead the Event Cell at ENSIAS IT Club, organizing events like ITHOLIC, which has strengthened my leadership, management, and teamwork skills.</p>
         <div class="btn-sci">
-            <a href="https://drive.google.com/file/d/1gjqGROInoVBpYRkDAqO7zFYI7nUAT9ez/view?usp=sharing" class="btn">Dowload CV</a>
+            <a href="https://drive.google.com/file/d/1kJqV0dI57Xuv7FHKQsHqUpX4HjJBWg2S/view?usp=sharing" class="btn">Dowload CV</a>
             <div class="sci">
                  <a href="https://github.com/zinebmouman"><i class='bx bxl-github' ></i></a>
                 <a href="www.linkedin.com/in/zineb-mouman-06b684299"><i class='bx bxl-linkedin' ></i></a>
@@ -151,12 +151,13 @@
 <!-- custom js -->
 <section class="resume">
     <div class="resume-container">
-        <div class="resume-box">
+        <div class="resume-box" id="resume-buttons-container">
             <h2>Why Hire Me?</h2>
             <p class="desc">Discover what makes me the ideal candidate for your team.</p>
             <button class="resume-btn active">Experience</button>
             <button class="resume-btn">Education</button>
             <button class="resume-btn">Skills</button>
+            <button class="resume-btn">Hobbies & Volunteer</button>
             <button class="resume-btn">About Me</button>
         </div>
 
@@ -164,39 +165,55 @@
             <div class="resume-detail experience active">
                 <h2 class="heading">My <span>Experience</span></h2>
                 <p class="desc">Professional experiences including internships and voluntary work.</p>
+
                 <div class="resume-list">
                     <div class="resume-item">
+                        <!-- Éléments décoratifs flottants -->
+                        <div class="floating-element"></div>
+                        <div class="floating-element"></div>
+                        <div class="floating-element"></div>
+
                         <p class="year">July - August 2024</p>
                         <h3>Web Development Intern</h3>
                         <p class="company">OCP Group, Khouribga</p>
-                        <p>Worked on the digitalization of professional maintenance operations during a final year internship.</p>
+                        <p>Worked on the digitalization of professional maintenance operations during a final year internship. Developed web applications using modern technologies and collaborated with cross-functional teams to deliver high-quality solutions.</p>
                     </div>
+
+
+
+
                 </div>
             </div>
 
             <div class="resume-detail education">
                 <h2 class="heading">My <span>Education</span></h2>
                 <p class="desc">Academic background and training.</p>
-                <div class="resume-list">
-                    <div class="resume-item">
-                        <p class="year">2023 - Present</p>
-                        <h3>Engineering Degree in Data Science and IoT</h3>
-                        <p class="company">ENSIAS, Rabat, Morocco</p>
-                        <p>Currently pursuing an engineering degree specializing in Data Science and IoT.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Engineering Degree in Data Science and IoT</h3>
+                            <p class="company">ENSIAS, Rabat, Morocco</p>
+                            <p>Currently pursuing an engineering degree specializing in Data Science and IoT.</p>
+                        </div>
                     </div>
 
-                    <div class="resume-item">
-                        <p class="year">2021 - 2023</p>
-                        <h3>Preparatory Classes for Engineering Schools (CPGE)</h3>
-                        <p class="company">CPGE Ibn Abdoune, Khouribga, Morocco</p>
-                        <p>Completed preparatory classes focused on Mathematics and Physics for competitive engineering school entrance exams.</p>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <div class="timeline-content">
+                            <h3>Preparatory Classes for Engineering Schools (CPGE)</h3>
+                            <p class="company">CPGE Ibn Abdoune, Khouribga, Morocco</p>
+                            <p>Completed preparatory classes focused on Mathematics and Physics for competitive engineering school entrance exams.</p>
+                        </div>
                     </div>
 
-                    <div class="resume-item">
-                        <p class="year">2020 - 2021</p>
-                        <h3>Baccalaureate in Physical Sciences</h3>
-                        <p class="company">Lycée Bir Anzarane, Fkih Ben Salah, Morocco</p>
-                        <p>Graduated with honors ("Très Bien" distinction) in Physical Sciences.</p>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <div class="timeline-content">
+                            <h3>Baccalaureate in Physical Sciences</h3>
+                            <p class="company">Lycée Bir Anzarane, Fkih Ben Salah, Morocco</p>
+                            <p>Graduated with honors ("Très Bien" distinction) in Physical Sciences.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -204,74 +221,482 @@
             <div class="resume-detail skills">
                 <h2 class="heading">My <span>Skills</span></h2>
                 <p class="desc">Technical skills across languages, frameworks, databases, platforms, and tools.</p>
-                <div class="resume-list">
+
+                <div class="skills-container">
                     <!-- Languages -->
-                    <div class="resume-item"><i class='bx bxl-java'></i> <span>Java</span></div>
-                    <div class="resume-item"><i class='bx bxl-python'></i> <span>Python</span></div>
-                    <div class="resume-item"><i class='bx bxl-php'></i> <span>PHP</span></div>
-                    <div class="resume-item"><i class='bx bxl-c-plus-plus'></i> <span>C</span></div>
-                    <div class="resume-item"><i class='bx bx-data'></i> <span>SQL</span></div>
-                    <div class="resume-item"><i class='bx bx-data'></i> <span>PL/SQL</span> </div>
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="85">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-java skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Java</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="70">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-python skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Python</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="85">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-php skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">PHP</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="80">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-c-plus-plus skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">C</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="88">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-data skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">SQL</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="80">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-data skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">PL/SQL</div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Frameworks and Libraries -->
-                    <div class="resume-item"><i class='bx bx-code'></i> <span>Java JEE</span></div>
-                    <div class="resume-item"><i class='bx bxl-spring-boot'></i> <span>Spring Boot</span></div>
-                    <div class="resume-item"><i class='bx bxl-angular'></i> <span>Angular</span></div>
-                    <div class="resume-item"><i class='bx bxl-php'></i> <span>Laravel</span></div>
-                    <div class="resume-item"><i class='bx bxl-python'></i> <span>Flask</span></div>
+                    <div class="skill-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="82">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-code skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Java JEE</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="85">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-spring-boot skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Spring Boot</div>
+                            </div>
+
+
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="80">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-php skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Laravel</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="60">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-angular skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Angular</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="60">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-python skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Flask</div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Databases -->
-                    <div class="resume-item"><i class='bx bx-data'></i> <span>PostgreSQL</span></div>
-                    <div class="resume-item"><i class='bx bx-data'></i> <span>Firebase</span></div>
-                    <div class="resume-item"><i class='bx bx-data'></i> <span>MySQL</span></div>
-                    <div class="resume-item"><i class='bx bx-data'></i> <span>Oracle Database</span></div>
+                    <div class="skill-category">
+                        <h3>Databases</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="80">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-data skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">PostgreSQL</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="90">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-data skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Firebase</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="85">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-data skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">MySQL</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="80">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-data skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Oracle DB</div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Tools and Platforms -->
-                    <div class="resume-item"><i class='bx bxl-microsoft'></i> <span>Azure</span></div>
-                    <div class="resume-item"><i class='bx bxl-aws'></i> <span>AWS</span></div>
-                    <div class="resume-item"><i class='bx bx-network-chart'></i> <span>Kubernetes</span></div>
-                    <div class="resume-item"><i class='bx bx-cube'></i> <span>Docker</span></div>
-                    <div class="resume-item"><i class='bx bx-cloud-upload'></i> <span>MinIO</span></div>
-                    <div class="resume-item"><i class='bx bx-transfer'></i> <span>Kafka</span></div>
-                    <div class="resume-item"><i class='bx bx-network-chart'></i> <span>Zookeeper</span></div>
-                    <div class="resume-item"><i class='bx bx-brain'></i> <span>ChromaDB</span></div>
-                    <div class="resume-item"><i class='bx bxl-git' ></i> <span>Git</span></div>
-                    <div class="resume-item"><i class='bx bxs-credit-card-front'></i> <span>Linux</span></div>
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="70">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-microsoft skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Azure</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="70">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-aws skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">AWS</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="60">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-network-chart skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Kubernetes</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="75">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-cube skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Docker</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="60">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-cloud-upload skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">MinIO</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="75">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-transfer skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Kafka</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="70">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-network-chart skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Zookeeper</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="60">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bx-brain skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">ChromaDB</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="90">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxl-git skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Git</div>
+                            </div>
+
+                            <div class="skill-item">
+                                <div class="skill-chart" data-percent="88">
+                                    <svg class="skill-circle" viewBox="0 0 36 36">
+                                        <path class="skill-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                        <path class="skill-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                    </svg>
+                                    <i class='bx bxs-credit-card-front skill-icon'></i>
+                                    <div class="skill-percent">0%</div>
+                                </div>
+                                <div class="skill-name">Linux</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+
+            <div class="resume-detail hobbies">
+                <h2 class="heading">Hobbies & <span>Volunteer Work</span></h2>
+                <p class="desc">Personal interests and community involvement that shape my character and values.</p>
+
+                <div class="resume-list">
+                    <!-- Section Hobbies -->
+                    <div class="hobbies-category hobbies">
+                        <!-- Particules flottantes -->
+                        <div class="floating-particle"></div>
+                        <div class="floating-particle"></div>
+                        <div class="floating-particle"></div>
+
+                        <!-- Badge de comptage -->
+                        <div class="activity-count">2</div>
+
+                        <h3>Creative Hobbies</h3>
+
+                        <ul class="hobbies-list">
+                            <li class="hobbies-item drawing">
+                                <h4>Drawing & Illustration</h4>
+                                <p>Passionate about sketching and digital art. I enjoy creating illustrations that blend traditional techniques with modern digital tools, expressing creativity through visual storytelling.</p>
+                            </li>
+
+                            <li class="hobbies-item crafts">
+                                <h4>Handmade Creations</h4>
+                                <p>Love crafting unique items with my hands, from decorative pieces to functional objects. This hobby enhances my attention to detail and problem-solving skills while providing a creative outlet.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Section Volontariat -->
+                    <div class="hobbies-category volunteer">
+                        <!-- Particules flottantes -->
+                        <div class="floating-particle"></div>
+                        <div class="floating-particle"></div>
+                        <div class="floating-particle"></div>
+
+                        <!-- Badge de comptage -->
+                        <div class="activity-count">2</div>
+
+                        <h3>Volunteer Activities</h3>
+
+                        <ul class="hobbies-list">
+                            <li class="hobbies-item cindh">
+                                <h4>CINDH Social Club Volunteer</h4>
+                                <p>Active volunteer in CINDH, a social club dedicated to organizing community activities to help people in need. Participated in various humanitarian initiatives and social support programs.</p>
+                            </li>
+
+                            <li class="hobbies-item it-club">
+                                <h4>ENSIAS IT Club Event Manager</h4>
+                                <p>Lead the Event Cell at ENSIAS IT Club, a technical organization that hosts events to explore the IT world. Organize workshops, conferences, and tech meetups to foster learning and networking.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="resume-detail about">
                 <h2 class="heading">About <span>Me</span></h2>
                 <p class="desc">Get to know me better through some key personal details.</p>
+
                 <div class="resume-list">
                     <div class="resume-item">
-                        <p> Name<span> Zineb Mouman</span></p>
+                        <div class="item-icon">
+                            <i class='bx bx-user'></i>
+                        </div>
+                        <div class="item-content">
+                            <p>Name</p>
+                            <span>Zineb Mouman</span>
+                        </div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
                     </div>
+
+
+
                     <div class="resume-item">
-                        <p> Gender<span> Female</span></p>
+                        <div class="item-icon">
+                            <i class='bx bx-buildings'></i>
+                        </div>
+                        <div class="item-content">
+                            <p>City</p>
+                            <span>Rabat</span>
+                        </div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
                     </div>
+
                     <div class="resume-item">
-                        <p> Age<span> 22 Years old</span></p>
+                        <div class="item-icon">
+                            <i class='bx bx-flag'></i>
+                        </div>
+                        <div class="item-content">
+                            <p>Nationality</p>
+                            <span>Moroccan</span>
+                        </div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
                     </div>
+
                     <div class="resume-item">
-                        <p> Status<span> Single</span></p>
+                        <div class="item-icon">
+                            <i class='bx bx-phone'></i>
+                        </div>
+                        <div class="item-content">
+                            <p>Phone</p>
+                            <span>+212 621-034162</span>
+                        </div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
                     </div>
+
                     <div class="resume-item">
-                        <p> City<span>Rabat</span></p>
+                        <div class="item-icon">
+                            <i class='bx bx-envelope'></i>
+                        </div>
+                        <div class="item-content">
+                            <p>Email</p>
+                            <span>moumanzineb9@gmail.com</span>
+                        </div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
                     </div>
+
                     <div class="resume-item">
-                        <p> Nationality<span> Moroccan</span></p>
-                    </div>
-                    <div class="resume-item">
-                        <p> Phone<span> +212 621-034162</span></p>
-                    </div>
-                    <div class="resume-item">
-                        <p> Email<span> moumanzineb9@gmail.com</span></p>
-                    </div>
-                    <div class="resume-item">
-                        <p> Languages<span> English, French, Arab</span></p>
+                        <div class="item-icon">
+                            <i class='bx bx-world'></i>
+                        </div>
+                        <div class="item-content">
+                            <p>Languages</p>
+                            <span>English, French, Arabic</span>
+                        </div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
+                        <div class="floating-dot"></div>
                     </div>
                 </div>
+
+
+            </div>
+
 
             </div>
         </div>
@@ -281,7 +706,7 @@
 </section>
 
 <!-- portfolio section -->
-<section class="portfolio ">
+<section class="portfolio">
     <h2 class="heading">Latest <span>Projects</span></h2>
     <div class="portfolio-container">
 
@@ -289,84 +714,94 @@
             <!-- Portfolio Details -->
             <div class="portfolio-detail active">
                 <p class="numb">01</p>
-                <h3>Comparaison SQL vs NoSQL</h3>
-                <p>Étude comparative entre Firebase, MongoDB et PostgreSQL avec applications web/mobile intégrant des modules IA, déploiement Docker, et évaluation sécurité.</p>
+                <h3>Smart IoT Farm System</h3>
+                <p>Complete intelligent agricultural ecosystem integrating IoT prototype, AI microservices and mobile application. Deployed connected sensors for real-time environmental data collection. Developed microservices with machine learning models for early crop disease prediction. Created mobile app with interactive dashboard for data visualization, predictive analysis and automated alert management.</p>
                 <div class="tech">
-                    <p>Firebase, MongoDB, PostgreSQL, Android Studio, Spring Boot, Next.js, Node.js, Docker, Apache JMeter, MobSF</p>
+                    <p>Android Studio, Firebase, MQTT, Firestore, Python, Flask, Scikit-learn, IoT Sensors, Microservices Architecture</p>
                 </div>
                 <div class="live-github">
-                    <a href="#"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
-                    <a href="https://github.com/zinebmouman/paincaremongodb.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                    <a href="https://drive.google.com/file/d/1KoGyua88gDFoV6xRGeqEaNt0nOsBlqtE/view?usp=sharing"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                    <a href="https://github.com/zinebmouman/ferme_intelligent_final.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
                 </div>
             </div>
 
             <div class="portfolio-detail">
                 <p class="numb">02</p>
-                <h3>Application de Recrutement</h3>
-                <p>Plateforme microservices pour la gestion complète du processus de recrutement avec modules OCR et IA d’analyse de CVs.</p>
+                <h3>SQL vs NoSQL Comparison</h3>
+                <p>Comparative study between Firebase, MongoDB and PostgreSQL with web/mobile applications integrating AI modules, Docker deployment, and security assessment.</p>
                 <div class="tech">
-                    <p>Spring Boot, Angular, PostgreSQL, Kafka, Zookeeper, MinIO, Docker, EasyOCR, LangChain</p>
+                    <p>Firebase, MongoDB, PostgreSQL, Android Studio, Spring Boot, Next.js, Node.js, Docker, Apache JMeter, MobSF</p>
                 </div>
                 <div class="live-github">
-                    <a href="#"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
-                    <a href="#"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                    <a href="https://drive.google.com/file/d/1CBjFYq-8-U_oY4ei4UICHPzzPZOc918E/view?usp=sharing"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                    <a href="https://github.com/zinebmouman/paincaremongodb.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
                 </div>
             </div>
 
             <div class="portfolio-detail">
                 <p class="numb">03</p>
-                <h3>Marché Fermier en ligne</h3>
-                <p>Application web de gestion de produits, commandes, livreurs, réclamations, et paiements optimisés.</p>
+                <h3>Recruitment Application</h3>
+                <p>Microservices platform for complete recruitment process management with OCR modules and AI for CV analysis.</p>
                 <div class="tech">
-                    <p>Java JEE, MySQL, HTML, CSS, JavaScript</p>
+                    <p>Spring Boot, Angular, PostgreSQL, Kafka, Zookeeper, MinIO, Docker, EasyOCR, LangChain</p>
                 </div>
                 <div class="live-github">
                     <a href="#"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
-                    <a href="https://github.com/zinebmouman/e_ferme2.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                    <a href="https://github.com/zinebmouman/recuirement_microservises.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
                 </div>
             </div>
 
             <div class="portfolio-detail">
                 <p class="numb">04</p>
-                <h3>Gestion d'un cabinet médical</h3>
-                <p>Application web pour la gestion des dossiers médicaux, rendez-vous patients, et accès sécurisé en ligne.</p>
+                <h3>Online Farmers Market</h3>
+                <p>Web application for product management, orders, delivery personnel, complaints, and optimized payments.</p>
                 <div class="tech">
-                    <p>PHP, Laravel, MySQL, HTML, CSS, JavaScript</p>
+                    <p>Java JEE, MySQL, HTML, CSS, JavaScript</p>
                 </div>
                 <div class="live-github">
-                    <a href="#"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
-                    <a href="https://github.com/zinebmouman/pfa.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                    <a href="https://drive.google.com/file/d/18lQTUQH1pEzfraPknntGURmLL972eDR9/view?usp=sharing"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                    <a href="https://github.com/zinebmouman/e_ferme2.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
                 </div>
             </div>
 
             <div class="portfolio-detail">
                 <p class="numb">05</p>
-                <h3>Gestion d'une école privée</h3>
-                <p>Plateforme web pour la gestion des étudiants, enseignants, cours, inscriptions et paiements en ligne.</p>
+                <h3>Medical Office Management</h3>
+                <p>Web application for managing medical records, patient appointments, and secure online access.</p>
                 <div class="tech">
                     <p>PHP, Laravel, MySQL, HTML, CSS, JavaScript</p>
                 </div>
                 <div class="live-github">
-                    <a href="#"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
-                    <a href="#"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                    <a href="https://drive.google.com/file/d/121WpCpn8zfTXnmOQ2SgP0kKx0269DNjP/view?usp=sharing"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                    <a href="https://github.com/zinebmouman/pfa.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
                 </div>
             </div>
 
             <div class="portfolio-detail">
                 <p class="numb">06</p>
-                <h3>Location de maisons (Android)</h3>
-                <p>Application mobile Android pour rechercher, louer et gérer des maisons disponibles.</p>
+                <h3>Industrial Maintenance Management System - OCP Group</h3>
+                <p>Enterprise-level web application developed during a 2-month internship at OCP Group to transform traditional maintenance operations into a fully digital ecosystem. Features include preventive maintenance scheduling, equipment monitoring, work order management, inventory tracking, and performance analytics dashboard. Successfully reduced maintenance downtime by 30% and improved operational efficiency across multiple industrial sites.</p>
+                <div class="tech">
+                    <p>Laravel, PHP, MySQL, HTML, CSS, JavaScript</p>
+                </div>
+                <div class="live-github">
+                    <a href="https://drive.google.com/file/d/18wCezdz5lVQ2uFdiD2K8HE1po87k1nnX/view?usp=sharing"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                    <a href="https://github.com/zinebmouman/ocp_app2.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                </div>
+            </div>
+
+            <div class="portfolio-detail">
+                <p class="numb">07</p>
+                <h3>House Rental (Android)</h3>
+                <p>Android mobile application to search, rent and manage available houses.</p>
                 <div class="tech">
                     <p>Android Studio, Firebase, Java</p>
                 </div>
                 <div class="live-github">
-                    <a href="#"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
-                    <a href="#"><i class='bx bxl-github'></i><span>Github Repository</span></a>
+                    <a href="https://drive.google.com/file/d/18hjI0jEj7oL3PEja-6xd2Ba-8x0M-hs2/view?usp=sharing"><i class='bx bx-arrow-back'></i><span>Live Project</span></a>
+                    <a href="https://github.com/zinebmouman/locationapp.git"><i class='bx bxl-github'></i><span>Github Repository</span></a>
                 </div>
             </div>
-
-
-
         </div>
 
         <div class="portfolio-box">
@@ -374,10 +809,13 @@
             <div class="portfolio-carousel">
                 <div class="img-slide">
                     <div class="img-item">
+                        <img src="images/smartfarm.jpg" alt="Smart IoT Farm System">
+                    </div>
+                    <div class="img-item">
                         <img src="images/SQL.png" alt="Comparaison SQL vs NoSQL">
                     </div>
                     <div class="img-item">
-                        <img src="images/img.png" alt="Application de Recrutement">
+                        <img src="images/recuiretment.jpg" alt="Application de Recrutement">
                     </div>
                     <div class="img-item">
                         <img src="images/Page2.png" alt="Marché Fermier">
@@ -386,25 +824,23 @@
                         <img src="images/accuil1.PNG" alt="Cabinet Médical">
                     </div>
                     <div class="img-item">
-                        <img src="images/img_1.png" alt="École Privée">
+                        <img src="images/OCPapp.jpeg" alt="École Privée">
                     </div>
                     <div class="img-item">
                         <img src="images/rentify.jpg" alt="Location de Maisons">
                     </div>
-
                 </div>
             </div>
 
             <!-- Navigation Buttons -->
             <div class="navigation">
                 <button class="arrow-left disabled"><i class='bx bx-chevron-left'></i></button>
-                <button class="arrow-right "><i class='bx bx-chevron-right'></i></button>
+                <button class="arrow-right"><i class='bx bx-chevron-right'></i></button>
             </div>
         </div>
 
     </div>
 </section>
-
 
 <!--contact section-->
 <section class="contact ">
