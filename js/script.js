@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Traductions complètes avec la nouvelle section
+// Traductions complètes avec TOUTES les sections
 const translations = {
     en: {
         // Header
@@ -277,8 +277,8 @@ const translations = {
         homeSubtitle: "I'm a",
         professions: {
             software: "Software engineer",
-            devops: "DevOps engineer",
-            cloud: "Cloud engineer",
+            devops: "DevOps Enthusiast",
+            cloud: "Cloud Enthusiast",
             it: "IT Enthusiast"
         },
         homeText: "Hello, I'm Zineb, a software engineering student specializing in Data Science and IoT at ENSIAS, with a strong background in mathematics and physics from preparatory classes (MP). I have two years of hands-on experience in web/mobile development, DevOps, data management, and data science. Currently, I'm focusing on microservices projects using Kubernetes, Kafka, and Docker. Beyond academics, I lead the Event Cell at ENSIAS IT Club, organizing events like ITHOLIC, which has strengthened my leadership, management, and teamwork skills.",
@@ -307,18 +307,42 @@ const translations = {
         skills: "Skills",
         hobbiesVolunteer: "Hobbies & Volunteer",
         about: "About Me",
+
+        // Experience Section
         expTitle: "My Experience",
         expDesc: "Professional experiences including internships and voluntary work.",
+        expDate: "July - August 2024",
+        expJob: "Web Development Intern",
+        expCompany: "OCP Group, Khouribga",
+        expText: "Worked on the digitalization of professional maintenance operations during a final year internship. Developed web applications using modern technologies and collaborated with cross-functional teams to deliver high-quality solutions.",
+
+        // Education Section
         eduTitle: "My Education",
         eduDesc: "Academic background and training.",
+        eduDate1: "2023 - Present",
+        eduDegree1: "Engineering Degree in Data Science and IoT",
+        eduSchool1: "ENSIAS, Rabat, Morocco",
+        eduText1: "Currently pursuing an engineering degree specializing in Data Science and IoT.",
+        eduDate2: "2021 - 2023",
+        eduDegree2: "Preparatory Classes for Engineering Schools (CPGE)",
+        eduSchool2: "CPGE Ibn Abdoune, Khouribga, Morocco",
+        eduText2: "Completed preparatory classes focused on Mathematics and Physics for competitive engineering school entrance exams.",
+        eduDate3: "2020 - 2021",
+        eduDegree3: "Baccalaureate in Physical Sciences",
+        eduSchool3: "Lycée Bir Anzarane, Fkih Ben Salah, Morocco",
+        eduText3: "Graduated with honors (\"Très Bien\" distinction) in Physical Sciences.",
+
+        // Skills Section
         skillsTitle: "My Skills",
         skillsDesc: "Technical skills across languages, frameworks, databases, platforms, and tools.",
+        programmingLanguages: "Programming Languages",
+        frameworksLibraries: "Frameworks & Libraries",
+        databases: "Databases",
+        toolsPlatforms: "Tools & Platforms",
+
+        // Hobbies & Volunteer Section
         hobbiesTitle: "Hobbies & Volunteer Work",
         hobbiesDesc: "Personal interests and community involvement that shape my character and values.",
-        aboutTitle: "About Me",
-        aboutDesc: "Get to know me better through some key personal details.",
-
-        // Hobbies & Volunteer
         creativeHobbies: "Creative Hobbies",
         drawing: "Drawing & Illustration",
         drawingDesc: "Passionate about sketching and digital art. I enjoy creating illustrations that blend traditional techniques with modern digital tools, expressing creativity through visual storytelling.",
@@ -330,7 +354,9 @@ const translations = {
         itClub: "ENSIAS IT Club Event Manager",
         itClubDesc: "Lead the Event Cell at ENSIAS IT Club, a technical organization that hosts events to explore the IT world. Organize workshops, conferences, and tech meetups to foster learning and networking.",
 
-        // About Me Items
+        // About Me Section
+        aboutTitle: "About Me",
+        aboutDesc: "Get to know me better through some key personal details.",
         aboutItems: {
             name: "Name",
             city: "City",
@@ -350,27 +376,16 @@ const translations = {
 
         // Portfolio Section
         portfolioTitle: "Latest Projects",
-        project1: "SQL vs NoSQL Comparison",
-        project1Desc: "Comparative study between Firebase, MongoDB and PostgreSQL with web/mobile applications integrating AI modules, Docker deployment, and security assessment.",
-        project2: "Recruitment Application",
-        project2Desc: "Microservices platform for complete recruitment process management with OCR modules and AI for CV analysis.",
-        project3: "Online Farmers Market",
-        project3Desc: "Web application for product management, orders, delivery personnel, complaints, and optimized payments.",
-        project4: "Medical Office Management",
-        project4Desc: "Web application for managing medical records, patient appointments, and secure online access.",
-        project5: "Private School Management",
-        project5Desc: "Web platform for managing students, teachers, courses, registrations and online payments.",
-        project6: "House Rental (Android)",
-        project6Desc: "Android mobile application to search, rent and manage available houses.",
         liveProject: "Live Project",
         githubRepo: "Github Repository",
 
         // Contact Section
         contactTitle: "Let's Work Together",
-        contactSubtitle: "Contact section",
+        contactSubtitle: "this is Contact section",
         phone: "Phone",
         email: "Email",
         address: "Address",
+        addressValue: "ENSIAS, Rabat, Morocco",
         contactFormTitle: "Contact Me!",
         namePlaceholder: "Full Name",
         emailPlaceholder: "Email Address",
@@ -393,8 +408,8 @@ const translations = {
         homeSubtitle: "Je suis",
         professions: {
             software: "Ingénieure logiciel",
-            devops: "Ingénieure DevOps",
-            cloud: "Ingénieure cloud",
+            devops: "Passionnée DevOps",
+            cloud: "Passionnée Cloud",
             it: "Passionnée d'informatique"
         },
         homeText: "Bonjour, je suis Zineb, étudiante en ingénierie logiciel spécialisée en Science des Données et IoT à l'ENSIAS, avec une solide formation en mathématiques et physique issue des classes préparatoires (MP). J'ai deux ans d'expérience pratique en développement web/mobile, DevOps, gestion de données et science des données. Actuellement, je me concentre sur des projets de microservices utilisant Kubernetes, Kafka et Docker. Au-delà des études, je dirige la Cellule Événements du ENSIAS IT Club, organisant des événements comme ITHOLIC, ce qui a renforcé mes compétences en leadership, gestion et travail d'équipe.",
@@ -406,11 +421,11 @@ const translations = {
         webDesc: "Je conçois et construis des sites web dynamiques et responsives, garantissant une expérience utilisateur engageante et optimisée.",
         mobileDev: "Développement Mobile",
         mobileDesc: "Je crée des applications mobiles intuitives et performantes, apportant des idées innovantes au bout des doigts des utilisateurs.",
-        dbManager: "Gestion de Bases de Données",
+        dbManager: "Gestionnaire de Base de Données",
         dbDesc: "J'administre et optimise des bases de données pour assurer un stockage efficace, sécurisé et facilement accessible des données.",
-        cloud: "Enthousiaste du Cloud",
+        cloud: "Passionnée du Cloud",
         cloudDesc: "J'utilise des plateformes cloud pour construire des solutions évolutives et résilientes, améliorant les performances et la fiabilité du système.",
-        devops: "Enthousiaste DevOps",
+        devops: "Passionnée DevOps",
         devopsDesc: "Je mets en œuvre des pratiques DevOps pour automatiser les processus, optimiser les workflows et accélérer la livraison logicielle.",
         dataScience: "Data Scientist",
         dataDesc: "J'analyse des données pour en extraire des insights significatifs, aidant à orienter des décisions stratégiques et des solutions innovantes.",
@@ -419,34 +434,60 @@ const translations = {
         resumeTitle: "Pourquoi me recruter?",
         resumeDesc: "Découvrez ce qui fait de moi la candidate idéale pour votre équipe.",
         experience: "Expérience",
-        education: "Éducation",
+        education: "Formation",
         skills: "Compétences",
         hobbiesVolunteer: "Loisirs & Bénévolat",
         about: "À propos",
+
+        // Experience Section
         expTitle: "Mon Expérience",
         expDesc: "Expériences professionnelles incluant stages et travail bénévole.",
+        expDate: "Juillet - Août 2024",
+        expJob: "Stagiaire Développement Web",
+        expCompany: "Groupe OCP, Khouribga",
+        expText: "Travaillé sur la digitalisation des opérations de maintenance professionnelle lors d'un stage de fin d'études. Développé des applications web utilisant des technologies modernes et collaboré avec des équipes transversales pour livrer des solutions de haute qualité.",
+
+        // Education Section
         eduTitle: "Ma Formation",
         eduDesc: "Parcours académique et formations.",
+        eduDate1: "2023 - Présent",
+        eduDegree1: "Diplôme d'Ingénieur en Science des Données et IoT",
+        eduSchool1: "ENSIAS, Rabat, Maroc",
+        eduText1: "Actuellement en cours d'obtention d'un diplôme d'ingénieur spécialisé en Science des Données et IoT.",
+        eduDate2: "2021 - 2023",
+        eduDegree2: "Classes Préparatoires aux Grandes Écoles (CPGE)",
+        eduSchool2: "CPGE Ibn Abdoune, Khouribga, Maroc",
+        eduText2: "Complété les classes préparatoires axées sur les Mathématiques et la Physique pour les concours d'entrée aux écoles d'ingénieurs.",
+        eduDate3: "2020 - 2021",
+        eduDegree3: "Baccalauréat en Sciences Physiques",
+        eduSchool3: "Lycée Bir Anzarane, Fkih Ben Salah, Maroc",
+        eduText3: "Diplômé avec mention (distinction \"Très Bien\") en Sciences Physiques.",
+
+        // Skills Section
         skillsTitle: "Mes Compétences",
         skillsDesc: "Compétences techniques en langages, frameworks, bases de données, plateformes et outils.",
-        hobbiesTitle: "Loisirs & Bénévolat",
-        hobbiesDesc: "Intérêts personnels et engagement communautaire qui façonnent mon caractère et mes valeurs.",
-        aboutTitle: "À propos",
-        aboutDesc: "Apprenez à mieux me connaître à travers quelques détails personnels clés.",
+        programmingLanguages: "Langages de Programmation",
+        frameworksLibraries: "Frameworks et Bibliothèques",
+        databases: "Bases de Données",
+        toolsPlatforms: "Outils et Plateformes",
 
-        // Hobbies & Volunteer
+        // Hobbies & Volunteer Section
+        hobbiesTitle: "Loisirs & Travail Bénévole",
+        hobbiesDesc: "Intérêts personnels et engagement communautaire qui façonnent mon caractère et mes valeurs.",
         creativeHobbies: "Loisirs Créatifs",
         drawing: "Dessin & Illustration",
         drawingDesc: "Passionnée de croquis et d'art numérique. J'aime créer des illustrations qui mélangent techniques traditionnelles et outils numériques modernes, exprimant la créativité à travers la narration visuelle.",
         handmade: "Créations Artisanales",
-        handmadeDesc: "J'adore fabriquer des objets uniques avec mes mains, des pièces décoratives aux objets fonctionnels. Ce passe-temps améliore mon attention aux détails et mes compétences de résolution de problèmes.",
+        handmadeDesc: "J'adore fabriquer des objets uniques avec mes mains, des pièces décoratives aux objets fonctionnels. Ce passe-temps améliore mon attention aux détails et mes compétences de résolution de problèmes tout en offrant un exutoire créatif.",
         volunteerActivities: "Activités Bénévoles",
         cindh: "Bénévole Club Social CINDH",
         cindhDesc: "Bénévole active au CINDH, un club social dédié à l'organisation d'activités communautaires pour aider les personnes dans le besoin. Participation à diverses initiatives humanitaires et programmes de soutien social.",
         itClub: "Responsable Événements Club IT ENSIAS",
-        itClubDesc: "Dirige la Cellule Événements du Club IT ENSIAS, une organisation technique qui organise des événements pour explorer le monde de l'informatique. Organisation d'ateliers, conférences et rencontres tech.",
+        itClubDesc: "Dirige la Cellule Événements du Club IT ENSIAS, une organisation technique qui organise des événements pour explorer le monde de l'informatique. Organisation d'ateliers, conférences et rencontres tech pour favoriser l'apprentissage et le réseautage.",
 
-        // About Me Items
+        // About Me Section
+        aboutTitle: "À Propos de Moi",
+        aboutDesc: "Apprenez à mieux me connaître à travers quelques détails personnels clés.",
         aboutItems: {
             name: "Nom",
             city: "Ville",
@@ -466,34 +507,23 @@ const translations = {
 
         // Portfolio Section
         portfolioTitle: "Derniers Projets",
-        project1: "Comparaison SQL vs NoSQL",
-        project1Desc: "Étude comparative entre Firebase, MongoDB et PostgreSQL avec applications web/mobile intégrant des modules IA, déploiement Docker, et évaluation sécurité.",
-        project2: "Application de Recrutement",
-        project2Desc: "Plateforme microservices pour la gestion complète du processus de recrutement avec modules OCR et IA d'analyse de CVs.",
-        project3: "Marché Fermier en ligne",
-        project3Desc: "Application web de gestion de produits, commandes, livreurs, réclamations, et paiements optimisés.",
-        project4: "Gestion de Cabinet Médical",
-        project4Desc: "Application web pour la gestion des dossiers médicaux, rendez-vous patients, et accès sécurisé en ligne.",
-        project5: "Gestion d'École Privée",
-        project5Desc: "Plateforme web pour la gestion des étudiants, enseignants, cours, inscriptions et paiements en ligne.",
-        project6: "Location de Maisons (Android)",
-        project6Desc: "Application mobile Android pour rechercher, louer et gérer des maisons disponibles.",
         liveProject: "Voir le Projet",
         githubRepo: "Dépôt Github",
 
         // Contact Section
         contactTitle: "Travaillons Ensemble",
-        contactSubtitle: "Section contact",
+        contactSubtitle: "ceci est la section contact",
         phone: "Téléphone",
         email: "Email",
         address: "Adresse",
-        contactFormTitle: "Contactez moi!",
+        addressValue: "ENSIAS, Rabat, Maroc",
+        contactFormTitle: "Contactez-moi!",
         namePlaceholder: "Nom Complet",
         emailPlaceholder: "Adresse Email",
         phonePlaceholder: "Numéro de Téléphone",
         subjectPlaceholder: "Sujet du Message",
         messagePlaceholder: "Votre Message",
-        sendBtn: "Envoyer"
+        sendBtn: "Envoyer le Message"
     }
 };
 
@@ -536,7 +566,7 @@ document.querySelectorAll('.lang-option').forEach(option => {
     });
 });
 
-// Fonction pour changer la langue
+// Fonction COMPLÈTE pour changer la langue
 function changeLanguage(lang) {
     const t = translations[lang];
 
@@ -573,6 +603,35 @@ function changeLanguage(lang) {
         if (btn) btn.textContent = t.downloadCV;
     }
 
+    // Services Section
+    const servicesSection = document.querySelector('.services');
+    if (servicesSection) {
+        const servicesTitle = servicesSection.querySelector('.heading');
+        if (servicesTitle) {
+            servicesTitle.innerHTML = `My <span>Services</span>`;
+            if (lang === 'fr') {
+                servicesTitle.innerHTML = `Mes <span>Services</span>`;
+            }
+        }
+
+        const serviceBoxes = servicesSection.querySelectorAll('.services-box');
+        const serviceTexts = [
+            { title: t.webDev, desc: t.webDesc },
+            { title: t.mobileDev, desc: t.mobileDesc },
+            { title: t.dbManager, desc: t.dbDesc },
+            { title: t.cloud, desc: t.cloudDesc },
+            { title: t.devops, desc: t.devopsDesc },
+            { title: t.dataScience, desc: t.dataDesc }
+        ];
+
+        serviceBoxes.forEach((box, idx) => {
+            const h3 = box.querySelector('h3');
+            const p = box.querySelector('p');
+            if (h3 && serviceTexts[idx]) h3.textContent = serviceTexts[idx].title;
+            if (p && serviceTexts[idx]) p.textContent = serviceTexts[idx].desc;
+        });
+    }
+
     // Resume Section - Boutons
     const resumeBox = document.querySelector('.resume-box:first-child');
     if (resumeBox) {
@@ -590,6 +649,226 @@ function changeLanguage(lang) {
             buttons[3].textContent = t.hobbiesVolunteer;
             buttons[4].textContent = t.about;
         }
+    }
+
+    // Experience Section
+    const experienceSection = document.querySelector('.resume-detail.experience');
+    if (experienceSection) {
+        const expTitle = experienceSection.querySelector('.heading');
+        const expDesc = experienceSection.querySelector('.desc');
+        const expItem = experienceSection.querySelector('.resume-item');
+
+        if (expTitle) {
+            expTitle.innerHTML = lang === 'fr' ? `Mon <span>Expérience</span>` : `My <span>Experience</span>`;
+        }
+        if (expDesc) expDesc.textContent = t.expDesc;
+
+        if (expItem) {
+            const year = expItem.querySelector('.year');
+            const jobTitle = expItem.querySelector('h3');
+            const company = expItem.querySelector('.company');
+            const description = expItem.querySelector('p:last-child');
+
+            if (year) year.textContent = t.expDate;
+            if (jobTitle) jobTitle.textContent = t.expJob;
+            if (company) company.textContent = t.expCompany;
+            if (description) description.textContent = t.expText;
+        }
+    }
+
+    // Education Section
+    const educationSection = document.querySelector('.resume-detail.education');
+    if (educationSection) {
+        const eduTitle = educationSection.querySelector('.heading');
+        const eduDesc = educationSection.querySelector('.desc');
+
+        if (eduTitle) {
+            eduTitle.innerHTML = lang === 'fr' ? `Ma <span>Formation</span>` : `My <span>Education</span>`;
+        }
+        if (eduDesc) eduDesc.textContent = t.eduDesc;
+
+        const timelineItems = educationSection.querySelectorAll('.timeline-item');
+        const eduData = [
+            { date: t.eduDate1, degree: t.eduDegree1, school: t.eduSchool1, text: t.eduText1 },
+            { date: t.eduDate2, degree: t.eduDegree2, school: t.eduSchool2, text: t.eduText2 },
+            { date: t.eduDate3, degree: t.eduDegree3, school: t.eduSchool3, text: t.eduText3 }
+        ];
+
+        timelineItems.forEach((item, idx) => {
+            const date = item.querySelector('.timeline-date');
+            const degree = item.querySelector('h3');
+            const school = item.querySelector('.company');
+            const text = item.querySelector('p:last-child');
+
+            if (date && eduData[idx]) date.textContent = eduData[idx].date;
+            if (degree && eduData[idx]) degree.textContent = eduData[idx].degree;
+            if (school && eduData[idx]) school.textContent = eduData[idx].school;
+            if (text && eduData[idx]) text.textContent = eduData[idx].text;
+        });
+    }
+
+    // Skills Section
+    const skillsSection = document.querySelector('.resume-detail.skills');
+    if (skillsSection) {
+        const skillsTitle = skillsSection.querySelector('.heading');
+        const skillsDesc = skillsSection.querySelector('.desc');
+
+        if (skillsTitle) {
+            skillsTitle.innerHTML = lang === 'fr' ? `Mes <span>Compétences</span>` : `My <span>Skills</span>`;
+        }
+        if (skillsDesc) skillsDesc.textContent = t.skillsDesc;
+
+        const skillCategories = skillsSection.querySelectorAll('.skill-category h3');
+        const categoryTitles = [t.programmingLanguages, t.frameworksLibraries, t.databases, t.toolsPlatforms];
+
+        skillCategories.forEach((category, idx) => {
+            if (categoryTitles[idx]) category.textContent = categoryTitles[idx];
+        });
+    }
+
+    // Hobbies & Volunteer Section
+    const hobbiesSection = document.querySelector('.resume-detail.hobbies');
+    if (hobbiesSection) {
+        const hobbiesTitle = hobbiesSection.querySelector('.heading');
+        const hobbiesDesc = hobbiesSection.querySelector('.desc');
+
+        if (hobbiesTitle) {
+            hobbiesTitle.innerHTML = lang === 'fr' ? `Loisirs & <span>Travail Bénévole</span>` : `Hobbies & <span>Volunteer Work</span>`;
+        }
+        if (hobbiesDesc) hobbiesDesc.textContent = t.hobbiesDesc;
+
+        // Creative Hobbies
+        const creativeSection = hobbiesSection.querySelector('.hobbies-category.hobbies h3');
+        if (creativeSection) creativeSection.textContent = t.creativeHobbies;
+
+        const drawingItem = hobbiesSection.querySelector('.hobbies-item.drawing');
+        if (drawingItem) {
+            const drawingTitle = drawingItem.querySelector('h4');
+            const drawingDesc = drawingItem.querySelector('p');
+            if (drawingTitle) drawingTitle.textContent = t.drawing;
+            if (drawingDesc) drawingDesc.textContent = t.drawingDesc;
+        }
+
+        const craftsItem = hobbiesSection.querySelector('.hobbies-item.crafts');
+        if (craftsItem) {
+            const craftsTitle = craftsItem.querySelector('h4');
+            const craftsDesc = craftsItem.querySelector('p');
+            if (craftsTitle) craftsTitle.textContent = t.handmade;
+            if (craftsDesc) craftsDesc.textContent = t.handmadeDesc;
+        }
+
+        // Volunteer Activities
+        const volunteerSection = hobbiesSection.querySelector('.hobbies-category.volunteer h3');
+        if (volunteerSection) volunteerSection.textContent = t.volunteerActivities;
+
+        const cindhItem = hobbiesSection.querySelector('.hobbies-item.cindh');
+        if (cindhItem) {
+            const cindhTitle = cindhItem.querySelector('h4');
+            const cindhDesc = cindhItem.querySelector('p');
+            if (cindhTitle) cindhTitle.textContent = t.cindh;
+            if (cindhDesc) cindhDesc.textContent = t.cindhDesc;
+        }
+
+        const itClubItem = hobbiesSection.querySelector('.hobbies-item.it-club');
+        if (itClubItem) {
+            const itClubTitle = itClubItem.querySelector('h4');
+            const itClubDesc = itClubItem.querySelector('p');
+            if (itClubTitle) itClubTitle.textContent = t.itClub;
+            if (itClubDesc) itClubDesc.textContent = t.itClubDesc;
+        }
+    }
+
+    // About Section
+    const aboutSection = document.querySelector('.resume-detail.about');
+    if (aboutSection) {
+        const aboutTitle = aboutSection.querySelector('.heading');
+        const aboutDesc = aboutSection.querySelector('.desc');
+
+        if (aboutTitle) {
+            aboutTitle.innerHTML = lang === 'fr' ? `À Propos <span>de Moi</span>` : `About <span>Me</span>`;
+        }
+        if (aboutDesc) aboutDesc.textContent = t.aboutDesc;
+
+        const aboutItems = aboutSection.querySelectorAll('.resume-item');
+        const aboutData = [
+            { label: t.aboutItems.name, value: t.aboutValues.name },
+            { label: t.aboutItems.city, value: t.aboutValues.city },
+            { label: t.aboutItems.nationality, value: t.aboutValues.nationality },
+            { label: t.aboutItems.phone, value: t.aboutValues.phone },
+            { label: t.aboutItems.email, value: t.aboutValues.email },
+            { label: t.aboutItems.languages, value: t.aboutValues.languages }
+        ];
+
+        aboutItems.forEach((item, idx) => {
+            const label = item.querySelector('.item-content p');
+            const value = item.querySelector('.item-content span');
+
+            if (label && aboutData[idx]) label.textContent = aboutData[idx].label;
+            if (value && aboutData[idx]) value.textContent = aboutData[idx].value;
+        });
+    }
+
+    // Portfolio Section
+    const portfolioSection = document.querySelector('.portfolio');
+    if (portfolioSection) {
+        const portfolioTitle = portfolioSection.querySelector('.heading');
+        if (portfolioTitle) {
+            portfolioTitle.innerHTML = lang === 'fr' ? `Derniers <span>Projets</span>` : `Latest <span>Projects</span>`;
+        }
+
+        // Portfolio links
+        const liveLinks = portfolioSection.querySelectorAll('.live-github a:first-child span');
+        const githubLinks = portfolioSection.querySelectorAll('.live-github a:last-child span');
+
+        liveLinks.forEach(link => {
+            if (link) link.textContent = t.liveProject;
+        });
+
+        githubLinks.forEach(link => {
+            if (link) link.textContent = t.githubRepo;
+        });
+    }
+
+    // Contact Section
+    const contactSection = document.querySelector('.contact');
+    if (contactSection) {
+        const contactTitle = contactSection.querySelector('.contact-box:first-child h2');
+        const contactSubtitle = contactSection.querySelector('.contact-box:first-child p');
+
+        if (contactTitle) contactTitle.textContent = t.contactTitle;
+        if (contactSubtitle) contactSubtitle.textContent = t.contactSubtitle;
+
+        // Contact details
+        const contactDetails = contactSection.querySelectorAll('.contact-detail');
+        const contactData = [
+            { label: t.phone, value: t.aboutValues.phone },
+            { label: t.email, value: t.aboutValues.email },
+            { label: t.address, value: t.addressValue }
+        ];
+
+        contactDetails.forEach((detail, idx) => {
+            const label = detail.querySelector('.detail p:first-child');
+            const value = detail.querySelector('.detail p:last-child');
+
+            if (label && contactData[idx]) label.textContent = contactData[idx].label;
+            if (value && contactData[idx]) value.textContent = contactData[idx].value;
+        });
+
+        // Contact form
+        const formTitle = contactSection.querySelector('form .heading');
+        if (formTitle) {
+            formTitle.innerHTML = lang === 'fr' ? `Contactez <span>moi!</span>` : `Contact <span>Me!</span>`;
+        }
+
+        const formInputs = contactSection.querySelectorAll('form input, form textarea');
+        const placeholders = [t.namePlaceholder, t.emailPlaceholder, t.phonePlaceholder, t.subjectPlaceholder, t.messagePlaceholder];
+
+        formInputs.forEach((input, idx) => {
+            if (placeholders[idx]) input.placeholder = placeholders[idx];
+        });
+
+        const submitBtn = contactSection.querySelector('form .btn');
+        if (submitBtn) submitBtn.textContent = t.sendBtn;
     }
 
     // Stocker la préférence de langue
