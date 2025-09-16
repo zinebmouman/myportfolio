@@ -392,7 +392,19 @@ const translations = {
         phonePlaceholder: "Phone Number",
         subjectPlaceholder: "Email Subject",
         messagePlaceholder: "Your Message",
-        sendBtn: "Send Message"
+        sendBtn: "Send Message",
+
+                // Portfolio – HERE
+        portfolioHereTitle: "HERE – Mobile E-commerce App",
+        portfolioHereDesc: "Built the mobile app with React Native (Expo) and a Spring Boot microservices backend: JWT/Firebase auth, product catalog, cart & checkout with PayPal, media storage on MinIO. Dockerized and deployed behind Nginx (HTTPS); fixed CORS/401/403; improved stability with health checks and structured logs.",
+        portfolioHereTech: "React Native (Expo), Spring Boot, PostgreSQL, Redis, RabbitMQ, Kafka, MinIO, PayPal, Docker, Nginx",
+        
+        // Experience – ISICOD
+        expDate2: "June - August 2025",
+        expJob2: "Software Engineering Intern (Full-Stack)",
+        expCompany2: "ISICOD, Rabat",
+        expText2: "Built and shipped the HERE mobile e-commerce app using React Native (Expo) and a Spring Boot microservices backend. Implemented JWT/Firebase auth, catalog, cart & checkout with PayPal; media on MinIO. Docker/Nginx deployment; resolved CORS/401/403; improved stability and response times."
+
     },
     fr: {
         // Header
@@ -523,7 +535,18 @@ const translations = {
         phonePlaceholder: "Numéro de Téléphone",
         subjectPlaceholder: "Sujet du Message",
         messagePlaceholder: "Votre Message",
-        sendBtn: "Envoyer le Message"
+        sendBtn: "Envoyer le Message",
+        // Portfolio – HERE
+        portfolioHereTitle: "HERE — Application e-commerce mobile",
+        portfolioHereDesc: "Développement de l’app mobile en React Native (Expo) et d’un backend Spring Boot en microservices : authentification JWT/Firebase, catalogue, panier et paiement PayPal, stockage médias sur MinIO. Services conteneurisés et déployés derrière Nginx (HTTPS) ; correction des erreurs CORS/401/403 ; stabilité améliorée via health checks et logs structurés.",
+        portfolioHereTech: "React Native (Expo), Spring Boot, PostgreSQL, Redis, RabbitMQ, Kafka, MinIO, PayPal, Docker, Nginx",
+        
+        // Expérience – ISICOD
+        expDate2: "Juin - Août 2025",
+        expJob2: "Stagiaire Ingénieure Logiciel (Full-Stack)",
+        expCompany2: "ISICOD, Rabat",
+        expText2: "Conception et mise en production de l’application e-commerce mobile HERE en React Native (Expo) avec backend Spring Boot en microservices. Auth JWT/Firebase, catalogue, panier et paiement PayPal ; médias MinIO. Déploiement Docker/Nginx ; résolution des erreurs CORS/401/403 ; amélioration de la stabilité et des temps de réponse."
+
     }
 };
 
