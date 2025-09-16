@@ -872,6 +872,32 @@ function changeLanguage(lang) {
         if (submitBtn) submitBtn.textContent = t.sendBtn;
     }
 
+    const setByKey = (key, val) => {
+    document.querySelectorAll(`[data-i18n="${key}"]`).forEach(el => {
+      if (!el) return;
+      // textContent suffit ici (tes champs sont du texte simple)
+      el.textContent = val;
+    });
+  };
+
+  // Expériences (OCP + ISICOD)
+  setByKey('expDate',    t.expDate);
+  setByKey('expJob',     t.expJob);
+  setByKey('expCompany', t.expCompany);
+  setByKey('expText',    t.expText);
+
+  setByKey('expDate2',    t.expDate2);
+  setByKey('expJob2',     t.expJob2);
+  setByKey('expCompany2', t.expCompany2);
+  setByKey('expText2',    t.expText2);
+
+  // Projet HERE (titre + description + techno)
+  setByKey('portfolioHereTitle', t.portfolioHereTitle);
+  setByKey('portfolioHereDesc',  t.portfolioHereDesc);
+  setByKey('portfolioHereTech',  t.portfolioHereTech);
+
+  // Stocker la langue choisie
+
     // Stocker la préférence de langue
     localStorage.setItem('preferredLanguage', lang);
 }
@@ -906,20 +932,6 @@ function toggleTheme() {
 }
 
 // ✅ Mise à jour robuste des 2 expériences par leurs clés data-i18n
-function setTextAll(sel, value) {
-  document.querySelectorAll(sel).forEach(el => { if (el) el.textContent = value; });
-}
-
-setTextAll('[data-i18n="expDate"]',    t.expDate);
-setTextAll('[data-i18n="expJob"]',     t.expJob);
-setTextAll('[data-i18n="expCompany"]', t.expCompany);
-setTextAll('[data-i18n="expText"]',    t.expText);
-
-setTextAll('[data-i18n="expDate2"]',    t.expDate2);
-setTextAll('[data-i18n="expJob2"]',     t.expJob2);
-setTextAll('[data-i18n="expCompany2"]', t.expCompany2);
-setTextAll('[data-i18n="expText2"]',    t.expText2);
-
 
 // Fonction pour appliquer le thème
 function setTheme(theme) {
