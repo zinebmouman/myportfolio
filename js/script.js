@@ -905,6 +905,22 @@ function toggleTheme() {
     setTheme(newTheme);
 }
 
+// ✅ Mise à jour robuste des 2 expériences par leurs clés data-i18n
+function setTextAll(sel, value) {
+  document.querySelectorAll(sel).forEach(el => { if (el) el.textContent = value; });
+}
+
+setTextAll('[data-i18n="expDate"]',    t.expDate);
+setTextAll('[data-i18n="expJob"]',     t.expJob);
+setTextAll('[data-i18n="expCompany"]', t.expCompany);
+setTextAll('[data-i18n="expText"]',    t.expText);
+
+setTextAll('[data-i18n="expDate2"]',    t.expDate2);
+setTextAll('[data-i18n="expJob2"]',     t.expJob2);
+setTextAll('[data-i18n="expCompany2"]', t.expCompany2);
+setTextAll('[data-i18n="expText2"]',    t.expText2);
+
+
 // Fonction pour appliquer le thème
 function setTheme(theme) {
     body.setAttribute('data-theme', theme);
