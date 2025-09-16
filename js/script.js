@@ -675,29 +675,7 @@ function changeLanguage(lang) {
     }
 
     // Experience Section
-    const experienceSection = document.querySelector('.resume-detail.experience');
-    if (experienceSection) {
-        const expTitle = experienceSection.querySelector('.heading');
-        const expDesc = experienceSection.querySelector('.desc');
-        const expItem = experienceSection.querySelector('.resume-item');
-
-        if (expTitle) {
-            expTitle.innerHTML = lang === 'fr' ? `Mon <span>Expérience</span>` : `My <span>Experience</span>`;
-        }
-        if (expDesc) expDesc.textContent = t.expDesc;
-
-        if (expItem) {
-            const year = expItem.querySelector('.year');
-            const jobTitle = expItem.querySelector('h3');
-            const company = expItem.querySelector('.company');
-            const description = expItem.querySelector('p:last-child');
-
-            if (year) year.textContent = t.expDate;
-            if (jobTitle) jobTitle.textContent = t.expJob;
-            if (company) company.textContent = t.expCompany;
-            if (description) description.textContent = t.expText;
-        }
-    }
+    
 
     // Education Section
     const educationSection = document.querySelector('.resume-detail.education');
